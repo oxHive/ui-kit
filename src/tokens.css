@@ -49,8 +49,8 @@
   --hm-mono-border: #2b2825;
 
   /* Brand accent — honey gold. Used for focus, active markers, and the hex
-     mark only, so teal/purple stay reserved for the layer semantics and
-     amber-orange stays reserved for warnings. */
+     mark only, so teal/purple stay reserved for their own semantic meaning
+     and amber-orange stays reserved for warnings. */
   --hm-accent: #d9a441;
   --hm-accent-ring: #d9a44155;
 
