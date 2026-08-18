@@ -1,8 +1,16 @@
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ label: String, color: { type: String, default: '' } })
-const style = computed(() => props.color
-  ? `background:color-mix(in srgb, ${props.color} 18%, transparent); color:${props.color}`
+
+// `color` is interpolated straight into a style string (Vue applies string
+// `:style` bindings via el.style.cssText), so it must be restricted to safe
+// CSS color syntax before use — otherwise an untrusted value could smuggle
+// extra declarations (e.g. `background:url(...)`) into the element's style.
+const SAFE_COLOR = /^(#[0-9a-fA-F]{3,8}|rgba?\([\d\s.%,]+\)|hsla?\([\d\s.%,]+\)|var\(--[\w-]+\)|[a-zA-Z]+)$/
+const safeColor = computed(() => (props.color && SAFE_COLOR.test(props.color)) ? props.color : '')
+
+const style = computed(() => safeColor.value
+  ? `background:color-mix(in srgb, ${safeColor.value} 18%, transparent); color:${safeColor.value}`
   : 'background:var(--hm-bg-elevated); color:var(--hm-text-tertiary)')
 </script>
 
