@@ -1,2 +1,2 @@
 // Populated incrementally as each component is extracted.
-export {}
+export { default as Button } from './components/Button.vue'
