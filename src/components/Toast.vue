@@ -3,10 +3,10 @@ defineProps({ visible: Boolean, message: { type: String, default: '' } })
 </script>
 
 <template>
-  <div role="status" aria-live="polite" class="fixed bottom-3 left-1/2 -translate-x-1/2 z-50">
+  <div role="status" aria-live="polite" class="oxui-toast-wrap">
     <Transition name="oxui-toast">
       <div v-if="visible"
-        class="whitespace-nowrap rounded-md px-3.5 py-1.5 font-mono text-xs"
+        class="oxui-toast"
         style="background:var(--hm-bg-overlay); border:0.5px solid var(--hm-border-default); color:var(--hm-text-secondary)">
         {{ message }}
       </div>
@@ -15,6 +15,25 @@ defineProps({ visible: Boolean, message: { type: String, default: '' } })
 </template>
 
 <style>
+/*
+ * Plain CSS on purpose (not Tailwind utility classes) — see AppSidebar.vue
+ * for the full rationale: bare utility classes referenced only inside
+ * @oxhive/ui's dist bundle never get generated in a consuming app's build.
+ */
+.oxui-toast-wrap {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+}
+.oxui-toast {
+  white-space: nowrap;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: var(--hm-font-mono);
+  font-size: 12px;
+}
 .oxui-toast-enter-active, .oxui-toast-leave-active { transition: opacity 0.2s; }
 .oxui-toast-enter-from, .oxui-toast-leave-to { opacity: 0; }
 </style>

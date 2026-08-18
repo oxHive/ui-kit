@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-  <ul class="flex flex-col py-3">
+  <ul class="oxui-nav-list">
     <li v-for="(item, i) in items" :key="item.label + i">
       <button
         @click="item.onClick?.()"
@@ -22,13 +22,25 @@ defineProps({
           <component :is="item.icon" class="oxui-nav-item__icon" width="16" height="16" aria-hidden="true" />
           <span>{{ item.label }}</span>
         </span>
-        <span v-if="item.badge" class="oxui-nav-item__badge font-mono">{{ item.badge }}</span>
+        <span v-if="item.badge" class="oxui-nav-item__badge">{{ item.badge }}</span>
       </button>
     </li>
   </ul>
 </template>
 
 <style>
+/*
+ * Plain CSS on purpose (not Tailwind utility classes) — see AppSidebar.vue
+ * for the full rationale: this component ships as a pre-built dist bundle
+ * and consuming apps never scan node_modules/@oxhive/ui for Tailwind
+ * content, so bare utility classes referenced only here would silently
+ * generate no CSS in the consumer's build.
+ */
+.oxui-nav-list {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+}
 .oxui-nav-item {
   width: calc(100% - 16px);
   margin: 1px 8px;
@@ -56,6 +68,7 @@ defineProps({
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px;
   font-size: 10px; line-height: 1;
+  font-family: var(--hm-font-mono);
   background: var(--hm-warning-bg); color: var(--hm-warning);
 }
 </style>
