@@ -4,7 +4,7 @@ import PgSection from '../PgSection.vue'
 </script>
 
 <template>
-  <PgSection title="SkeletonCard" description="no props — loading placeholder shape">
+  <PgSection title="SkeletonCard" description="no props, just a loading placeholder shape">
     <template #controls>
       <span style="font-size:12px; color:var(--hm-text-tertiary)">static, no controls</span>
     </template>

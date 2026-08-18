@@ -12,8 +12,8 @@ html, body {
 
 /*
  * Catalog shell: a fixed sidebar (component list) beside a single-component
- * stage, rather than every demo stacked on one long page — picking a
- * catalog entry is what decides which demo mounts, so only one is ever in
+ * stage, rather than every demo stacked on one long page. Picking a
+ * catalog entry decides which demo mounts, so only one is ever in
  * the DOM at a time.
  */
 .pg-shell {
@@ -119,9 +119,9 @@ html, body {
 }
 
 /*
- * Fills whatever vertical space the controls/preview row doesn't use —
- * a live, reactive Vue usage snippet for the demo's current tweak values,
- * rather than leaving the rest of the stage empty.
+ * Fills whatever vertical space the controls/preview row doesn't use
+ * with a live, reactive Vue usage snippet for the demo's current tweak
+ * values, rather than leaving the rest of the stage empty.
  */
 .pg-section__snippet {
   flex: 1;
@@ -192,7 +192,8 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   background: var(--hm-bg-elevated);
 }
@@ -242,7 +243,7 @@ html, body {
 /*
  * Below this width the sidebar+stage columns and the controls/preview
  * split inside each section no longer have room to sit side by side
- * without squeezing text into unreadable slivers — stack everything
+ * without squeezing text into unreadable slivers, so stack everything
  * instead.
  */
 @media (max-width: 720px) {

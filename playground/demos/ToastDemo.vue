@@ -17,7 +17,7 @@ function show() {
 </script>
 
 <template>
-  <PgSection title="Toast" description="visible / message props — timeout is the consumer's responsibility, mirrored here">
+  <PgSection title="Toast" description="visible / message props (timeout is the consumer's responsibility, mirrored here)">
     <template #controls>
       <label class="pg-control">
         message
