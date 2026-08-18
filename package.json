@@ -16,7 +16,8 @@
   "scripts": {
     "build": "vite build",
     "test": "vitest run",
-    "prepare": "vite build"
+    "prepare": "vite build",
+    "playground": "vite --config playground/vite.config.js"
   },
   "peerDependencies": {
     "vue": "^3.5.0"

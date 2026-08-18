@@ -40,6 +40,8 @@ defineProps({
   display: flex;
   flex-direction: column;
   padding: 12px 0;
+  margin: 0;
+  list-style: none;
 }
 .oxui-nav-item {
   width: calc(100% - 16px);
