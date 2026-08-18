@@ -1,5 +1,6 @@
 // Populated incrementally as each component is extracted.
 export { default as AppNav } from './components/AppNav.vue'
+export { default as AppSidebar } from './components/AppSidebar.vue'
 export { default as Badge } from './components/Badge.vue'
 export { default as Button } from './components/Button.vue'
 export { default as EmptyState } from './components/EmptyState.vue'
