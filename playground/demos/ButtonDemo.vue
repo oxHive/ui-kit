@@ -16,7 +16,7 @@ const snippet = computed(() => {
 </script>
 
 <template>
-  <PgSection title="Button" description="variant: primary | default | danger | ghost — size: sm | md">
+  <PgSection title="Button" description="variant: primary | default | danger | ghost; size: sm | md">
     <template #controls>
       <label class="pg-control">
         variant

@@ -1,3 +1,7 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   min-height: 100%;
@@ -8,13 +12,14 @@ html, body {
 
 /*
  * Catalog shell: a fixed sidebar (component list) beside a single-component
- * stage, rather than every demo stacked on one long page — picking a
- * catalog entry is what decides which demo mounts, so only one is ever in
+ * stage, rather than every demo stacked on one long page. Picking a
+ * catalog entry decides which demo mounts, so only one is ever in
  * the DOM at a time.
  */
 .pg-shell {
   display: flex;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -114,9 +119,9 @@ html, body {
 }
 
 /*
- * Fills whatever vertical space the controls/preview row doesn't use —
- * a live, reactive Vue usage snippet for the demo's current tweak values,
- * rather than leaving the rest of the stage empty.
+ * Fills whatever vertical space the controls/preview row doesn't use
+ * with a live, reactive Vue usage snippet for the demo's current tweak
+ * values, rather than leaving the rest of the stage empty.
  */
 .pg-section__snippet {
   flex: 1;
@@ -128,13 +133,37 @@ html, body {
   border-top: 0.5px solid var(--hm-border-subtle);
 }
 
+.pg-snippet-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
 .pg-snippet-label {
   font-size: 10px;
   font-family: var(--hm-font-mono);
   color: var(--hm-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 8px;
+}
+
+.pg-copy-btn {
+  height: 22px;
+  padding: 0 8px;
+  font-size: 10px;
+  font-family: var(--hm-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: transparent;
+  border: 0.5px solid var(--hm-border-subtle);
+  border-radius: 4px;
+  color: var(--hm-text-tertiary);
+  cursor: pointer;
+}
+.pg-copy-btn:hover {
+  background: var(--hm-bg-elevated);
+  color: var(--hm-text-primary);
 }
 
 .pg-snippet-code {
@@ -163,7 +192,8 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   background: var(--hm-bg-elevated);
 }
@@ -193,7 +223,7 @@ html, body {
   color: var(--hm-text-primary);
 }
 
-.pg-control label.pg-check {
+.pg-control.pg-check {
   flex-direction: row;
   align-items: center;
   gap: 6px;
@@ -208,4 +238,56 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/*
+ * Below this width the sidebar+stage columns and the controls/preview
+ * split inside each section no longer have room to sit side by side
+ * without squeezing text into unreadable slivers, so stack everything
+ * instead.
+ */
+@media (max-width: 720px) {
+  .pg-shell {
+    flex-direction: column;
+  }
+
+  .pg-sidebar {
+    flex: 0 0 auto;
+    max-height: 38vh;
+    border-right: none;
+    border-bottom: 0.5px solid var(--hm-border-subtle);
+  }
+
+  .pg-stage {
+    padding: 16px;
+  }
+
+  .pg-section__head {
+    padding: 14px 16px 12px;
+  }
+
+  .pg-section__body {
+    flex-direction: column;
+  }
+
+  .pg-section__controls {
+    flex: 0 0 auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 0.5px solid var(--hm-border-subtle);
+  }
+
+  .pg-control select,
+  .pg-control input[type="text"] {
+    width: 100%;
+  }
+
+  .pg-section__preview {
+    flex: 1 1 auto;
+    padding: 16px;
+  }
+
+  .pg-section__snippet {
+    padding: 14px 16px;
+  }
 }

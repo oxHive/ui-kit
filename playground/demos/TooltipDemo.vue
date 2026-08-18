@@ -22,7 +22,7 @@ function onLeave() {
 </script>
 
 <template>
-  <PgSection title="Tooltip" description="text / visible / x / y — flips below when near the top of the viewport">
+  <PgSection title="Tooltip" description="text / visible / x / y; flips below when near the top of the viewport">
     <template #controls>
       <label class="pg-control">
         text
