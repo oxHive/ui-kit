@@ -68,7 +68,7 @@ defineProps({
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px;
   font-size: 10px; line-height: 1;
-  font-family: var(--hm-font-mono);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   background: var(--hm-warning-bg); color: var(--hm-warning);
 }
 </style>

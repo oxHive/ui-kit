@@ -24,11 +24,10 @@
   background-size: 800px 100%;
   animation: oxui-shimmer 1.5s infinite;
   border-radius: 4px;
-  margin-bottom: 8px;
 }
-.oxui-skeleton--title { height: 12px; width: 75%; }
-.oxui-skeleton--body { height: 10px; width: 100%; }
-.oxui-skeleton--meta { height: 8px; width: 50%; margin-bottom: 0; }
+.oxui-skeleton--title { height: 12px; width: 75%; margin-bottom: 8px; }
+.oxui-skeleton--body { height: 10px; width: 100%; margin-bottom: 8px; }
+.oxui-skeleton--meta { height: 8px; width: 50%; }
 @media (prefers-reduced-motion: reduce) {
   .oxui-skeleton { animation: none; }
 }

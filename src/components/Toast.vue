@@ -31,7 +31,7 @@ defineProps({ visible: Boolean, message: { type: String, default: '' } })
   white-space: nowrap;
   border-radius: 6px;
   padding: 6px 14px;
-  font-family: var(--hm-font-mono);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 12px;
 }
 .oxui-toast-enter-active, .oxui-toast-leave-active { transition: opacity 0.2s; }

@@ -18,9 +18,9 @@ const style = computed(() => props.color
  */
 .oxui-badge {
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 2px 8px;
   font-size: 10px;
-  font-family: var(--hm-font-mono);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 </style>
