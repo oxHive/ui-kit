@@ -1,10 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Badge } from '../../src/index.js'
 import PgSection from '../PgSection.vue'
 
 const label = ref('personal')
 const color = ref('#1d9e75')
+
+const snippet = computed(() => `<Badge label="${label.value}" color="${color.value}" />`)
 </script>
 
 <template>
@@ -23,5 +25,6 @@ const color = ref('#1d9e75')
       <Badge :label="label" :color="color" />
       <Badge label="no color" />
     </template>
+    <template #snippet>{{ snippet }}</template>
   </PgSection>
 </template>

@@ -1,11 +1,13 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Button, Toast } from '../../src/index.js'
 import PgSection from '../PgSection.vue'
 
 const message = ref('Copied: /memory-edit mem_a1b2c3')
 const visible = ref(false)
 let timer = null
+
+const snippet = computed(() => `<Toast :visible="visible" message="${message.value}" />`)
 
 function show() {
   visible.value = true
@@ -28,5 +30,6 @@ function show() {
         <Toast :visible="visible" :message="message" />
       </div>
     </template>
+    <template #snippet>{{ snippet }}</template>
   </PgSection>
 </template>

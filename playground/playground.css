@@ -79,10 +79,12 @@ html, body {
 
 .pg-stage > .pg-section {
   flex: 1;
-  align-self: flex-start;
 }
 
 .pg-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   border: 0.5px solid var(--hm-border-subtle);
   border-radius: 8px;
   overflow: hidden;
@@ -109,6 +111,41 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   border-top: 0.5px solid var(--hm-border-subtle);
+}
+
+/*
+ * Fills whatever vertical space the controls/preview row doesn't use —
+ * a live, reactive Vue usage snippet for the demo's current tweak values,
+ * rather than leaving the rest of the stage empty.
+ */
+.pg-section__snippet {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 120px;
+  padding: 16px 20px;
+  background: var(--hm-mono-bg);
+  border-top: 0.5px solid var(--hm-border-subtle);
+}
+
+.pg-snippet-label {
+  font-size: 10px;
+  font-family: var(--hm-font-mono);
+  color: var(--hm-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.pg-snippet-code {
+  flex: 1;
+  margin: 0;
+  overflow: auto;
+  font-family: var(--hm-font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--hm-text-primary);
+  white-space: pre;
 }
 
 .pg-section__controls {

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Button, Modal } from '../../src/index.js'
 import PgSection from '../PgSection.vue'
 
@@ -9,6 +9,15 @@ const confirmLabel = ref('Delete')
 const dangerous = ref(true)
 const open = ref(false)
 const lastAction = ref('')
+
+const snippet = computed(() => `<Modal
+  title="${title.value}"
+  body="${body.value}"
+  confirm-label="${confirmLabel.value}"
+  :dangerous="${dangerous.value}"
+  @confirm="..."
+  @cancel="..."
+/>`)
 </script>
 
 <template>
@@ -42,5 +51,6 @@ const lastAction = ref('')
         @cancel="lastAction = 'cancel'; open = false"
       />
     </template>
+    <template #snippet>{{ snippet }}</template>
   </PgSection>
 </template>

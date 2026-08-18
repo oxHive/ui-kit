@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Tooltip } from '../../src/index.js'
 import PgSection from '../PgSection.vue'
 
@@ -7,6 +7,8 @@ const text = ref('Hover me for a tooltip')
 const visible = ref(false)
 const x = ref(0)
 const y = ref(0)
+
+const snippet = computed(() => `<Tooltip :visible="visible" text="${text.value}" :x="x" :y="y" />`)
 
 function onEnter(e) {
   const rect = e.target.getBoundingClientRect()
@@ -37,5 +39,6 @@ function onLeave() {
         <Tooltip :visible="visible" :text="text" :x="x" :y="y" />
       </div>
     </template>
+    <template #snippet>{{ snippet }}</template>
   </PgSection>
 </template>

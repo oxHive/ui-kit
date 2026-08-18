@@ -1,11 +1,18 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Button } from '../../src/index.js'
 import PgSection from '../PgSection.vue'
 
 const variant = ref('primary')
 const size = ref('md')
 const disabled = ref(false)
+
+const snippet = computed(() => {
+  const attrs = [`variant="${variant.value}"`]
+  if (size.value !== 'md') attrs.push(`size="${size.value}"`)
+  if (disabled.value) attrs.push('disabled')
+  return `<Button ${attrs.join(' ')}>Save</Button>`
+})
 </script>
 
 <template>
@@ -35,5 +42,6 @@ const disabled = ref(false)
     <template #preview>
       <Button :variant="variant" :size="size" :disabled="disabled">Save</Button>
     </template>
+    <template #snippet>{{ snippet }}</template>
   </PgSection>
 </template>

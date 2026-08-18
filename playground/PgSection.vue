@@ -16,5 +16,9 @@ defineProps({ title: String, description: String })
         <slot name="preview" />
       </div>
     </div>
+    <div class="pg-section__snippet">
+      <div class="pg-snippet-label">usage</div>
+      <pre class="pg-snippet-code"><code><slot name="snippet" /></code></pre>
+    </div>
   </section>
 </template>

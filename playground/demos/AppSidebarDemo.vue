@@ -51,5 +51,11 @@ const items = reactive([
         <div style="flex:1; padding:16px; font-size:12px; color:var(--hm-text-tertiary); background:var(--hm-bg-base)">main content area</div>
       </div>
     </template>
+    <template #snippet>{{ `<AppSidebar product-name="Playground" version="0.1.0">
+  <template #logo-icon><ProductIcon /></template>
+  <AppNav :items="items" />
+  <template #status>...</template>
+  <template #footer>...</template>
+</AppSidebar>` }}</template>
   </PgSection>
 </template>

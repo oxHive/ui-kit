@@ -15,5 +15,6 @@ import PgSection from '../PgSection.vue'
         <SkeletonCard />
       </div>
     </template>
+    <template #snippet>{{ '<SkeletonCard />' }}</template>
   </PgSection>
 </template>

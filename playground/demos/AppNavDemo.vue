@@ -1,5 +1,5 @@
 <script setup>
-import { h, reactive } from 'vue'
+import { h, reactive, computed } from 'vue'
 import { AppNav } from '../../src/index.js'
 import PgSection from '../PgSection.vue'
 
@@ -19,6 +19,15 @@ const items = reactive([
 function setActive(i) {
   items.forEach((item, idx) => { item.active = idx === i })
 }
+
+const snippet = computed(() => {
+  const lines = items.map((item) => {
+    const parts = [`label: '${item.label}'`, 'icon: DotIcon', `active: ${item.active}`]
+    if (item.badge) parts.push(`badge: ${item.badge}`)
+    return `  { ${parts.join(', ')} },`
+  })
+  return `const items = [\n${lines.join('\n')}\n]\n\n<AppNav :items="items" />`
+})
 </script>
 
 <template>
@@ -31,5 +40,6 @@ function setActive(i) {
         <AppNav :items="items" />
       </div>
     </template>
+    <template #snippet>{{ snippet }}</template>
   </PgSection>
 </template>

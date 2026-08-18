@@ -1,10 +1,16 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { EmptyState } from '../../src/index.js'
 import PgSection from '../PgSection.vue'
 
 const message = ref('No memories yet.')
 const hint = ref('Ask Claude to remember something.')
+
+const snippet = computed(() => `<EmptyState message="${message.value}" hint="${hint.value}">
+  <template #icon>
+    <svg>...</svg>
+  </template>
+</EmptyState>`)
 </script>
 
 <template>
@@ -32,5 +38,6 @@ const hint = ref('Ask Claude to remember something.')
         </EmptyState>
       </div>
     </template>
+    <template #snippet>{{ snippet }}</template>
   </PgSection>
 </template>

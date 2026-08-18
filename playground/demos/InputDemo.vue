@@ -1,9 +1,11 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Input } from '../../src/index.js'
 import PgSection from '../PgSection.vue'
 
 const text = ref('Hello')
+
+const snippet = computed(() => `<Input v-model="text" />\n\n// text.value === ${JSON.stringify(text.value)}`)
 </script>
 
 <template>
@@ -14,5 +16,6 @@ const text = ref('Hello')
     <template #preview>
       <Input v-model="text" style="width:240px" />
     </template>
+    <template #snippet>{{ snippet }}</template>
   </PgSection>
 </template>
