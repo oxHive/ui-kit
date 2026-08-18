@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Button, Modal } from '../../src/index.js'
+import PgSection from '../PgSection.vue'
 
 const title = ref('Delete memory?')
 const body = ref('This will be permanently deleted.')
@@ -11,10 +12,8 @@ const lastAction = ref('')
 </script>
 
 <template>
-  <section class="pg-section">
-    <h2>Modal</h2>
-    <p class="pg-desc">title / body / confirmLabel / dangerous, emits confirm / cancel</p>
-    <div class="pg-controls">
+  <PgSection title="Modal" description="title / body / confirmLabel / dangerous, emits confirm / cancel">
+    <template #controls>
       <label class="pg-control">
         title
         <input type="text" v-model="title" />
@@ -27,19 +26,21 @@ const lastAction = ref('')
         <input type="checkbox" v-model="dangerous" />
         dangerous
       </label>
-    </div>
-    <div class="pg-preview pg-preview--column">
-      <Button variant="default" @click="open = true">Open modal</Button>
-      <span v-if="lastAction" style="font-size:12px; color:var(--hm-text-tertiary)">last emit: {{ lastAction }}</span>
-    </div>
-    <Modal
-      v-if="open"
-      :title="title"
-      :body="body"
-      :confirm-label="confirmLabel"
-      :dangerous="dangerous"
-      @confirm="lastAction = 'confirm'; open = false"
-      @cancel="lastAction = 'cancel'; open = false"
-    />
-  </section>
+    </template>
+    <template #preview>
+      <div class="pg-section__preview--column">
+        <Button variant="default" @click="open = true">Open modal</Button>
+        <span v-if="lastAction" style="font-size:12px; color:var(--hm-text-tertiary)">last emit: {{ lastAction }}</span>
+      </div>
+      <Modal
+        v-if="open"
+        :title="title"
+        :body="body"
+        :confirm-label="confirmLabel"
+        :dangerous="dangerous"
+        @confirm="lastAction = 'confirm'; open = false"
+        @cancel="lastAction = 'cancel'; open = false"
+      />
+    </template>
+  </PgSection>
 </template>

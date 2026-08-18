@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Button } from '../../src/index.js'
+import PgSection from '../PgSection.vue'
 
 const variant = ref('primary')
 const size = ref('md')
@@ -8,10 +9,8 @@ const disabled = ref(false)
 </script>
 
 <template>
-  <section class="pg-section">
-    <h2>Button</h2>
-    <p class="pg-desc">variant: primary | default | danger | ghost — size: sm | md</p>
-    <div class="pg-controls">
+  <PgSection title="Button" description="variant: primary | default | danger | ghost — size: sm | md">
+    <template #controls>
       <label class="pg-control">
         variant
         <select v-model="variant">
@@ -32,9 +31,9 @@ const disabled = ref(false)
         <input type="checkbox" v-model="disabled" />
         disabled
       </label>
-    </div>
-    <div class="pg-preview">
+    </template>
+    <template #preview>
       <Button :variant="variant" :size="size" :disabled="disabled">Save</Button>
-    </div>
-  </section>
+    </template>
+  </PgSection>
 </template>
