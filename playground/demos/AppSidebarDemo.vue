@@ -8,6 +8,10 @@ const DotIcon = { render: () => h('svg', { width: 16, height: 16, viewBox: '0 0 
 const RingIcon = { render: () => h('svg', { width: 16, height: 16, viewBox: '0 0 16 16' }, [
   h('circle', { cx: 8, cy: 8, r: 5, fill: 'none', stroke: 'currentColor', 'stroke-width': 1.5 }),
 ]) }
+const ProductIcon = { render: () => h('svg', { width: 22, height: 22, viewBox: '0 0 16 16' }, [
+  h('polygon', { points: '8,1.5 13.6,4.75 13.6,11.25 8,14.5 2.4,11.25 2.4,4.75', fill: 'none', stroke: 'var(--hm-accent)', 'stroke-width': 1.2 }),
+  h('circle', { cx: 8, cy: 8, r: 2, fill: 'var(--hm-accent)' }),
+]) }
 
 const items = reactive([
   { label: 'Memories', icon: DotIcon, active: true },
@@ -19,11 +23,14 @@ const items = reactive([
 <template>
   <section class="pg-section">
     <h2>AppSidebar</h2>
-    <p class="pg-desc">slot-driven shell (logo / default / status / footer), composed here with AppNav + Badge</p>
-    <div style="height:360px; display:flex; border:0.5px solid var(--hm-border-subtle); border-radius:6px; overflow:hidden">
-      <AppSidebar>
-        <template #logo>
-          <div style="font-size:15px; font-weight:600">Playground</div>
+    <p class="pg-desc">
+      standardized header (logo-icon slot + productName/version props) and a fixed OxHive
+      brand footer, composed here with AppNav + Badge in the default/status/footer slots
+    </p>
+    <div style="height:400px; display:flex; border:0.5px solid var(--hm-border-subtle); border-radius:6px; overflow:hidden">
+      <AppSidebar product-name="Playground" version="0.1.0">
+        <template #logo-icon>
+          <ProductIcon />
         </template>
 
         <AppNav :items="items" />
@@ -35,7 +42,7 @@ const items = reactive([
         </template>
 
         <template #footer>
-          <div style="font-size:11px; color:var(--hm-text-tertiary)">@oxhive/ui demo</div>
+          <div style="font-size:11px; color:var(--hm-text-tertiary)">1,234 items</div>
         </template>
       </AppSidebar>
       <div style="flex:1; padding:16px; font-size:12px; color:var(--hm-text-tertiary)">main content area</div>
