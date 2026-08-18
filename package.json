@@ -9,7 +9,7 @@
   "module": "./dist/oxhive-ui.js",
   "exports": {
     ".": "./dist/oxhive-ui.js",
-    "./tokens.css": "./dist/tokens.css",
+    "./tokens.css": "./src/tokens.css",
     "./tailwind-preset.js": "./src/tailwind-preset.js"
   },
   "scripts": {
