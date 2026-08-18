@@ -1,8 +1,9 @@
+# Disabled: the playground now deploys via Cloudflare Pages (see
+# wrangler.jsonc) instead of GitHub Pages. Kept around, dispatch-only,
+# in case we ever want to re-enable the push trigger.
 name: Deploy playground to GitHub Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

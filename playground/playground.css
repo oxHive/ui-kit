@@ -15,6 +15,7 @@ html, body {
 .pg-shell {
   display: flex;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -208,4 +209,56 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/*
+ * Below this width the sidebar+stage columns and the controls/preview
+ * split inside each section no longer have room to sit side by side
+ * without squeezing text into unreadable slivers — stack everything
+ * instead.
+ */
+@media (max-width: 720px) {
+  .pg-shell {
+    flex-direction: column;
+  }
+
+  .pg-sidebar {
+    flex: 0 0 auto;
+    max-height: 38vh;
+    border-right: none;
+    border-bottom: 0.5px solid var(--hm-border-subtle);
+  }
+
+  .pg-stage {
+    padding: 16px;
+  }
+
+  .pg-section__head {
+    padding: 14px 16px 12px;
+  }
+
+  .pg-section__body {
+    flex-direction: column;
+  }
+
+  .pg-section__controls {
+    flex: 0 0 auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 0.5px solid var(--hm-border-subtle);
+  }
+
+  .pg-control select,
+  .pg-control input[type="text"] {
+    width: 100%;
+  }
+
+  .pg-section__preview {
+    flex: 1 1 auto;
+    padding: 16px;
+  }
+
+  .pg-section__snippet {
+    padding: 14px 16px;
+  }
 }
