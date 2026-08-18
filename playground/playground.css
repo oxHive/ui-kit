@@ -133,13 +133,37 @@ html, body {
   border-top: 0.5px solid var(--hm-border-subtle);
 }
 
+.pg-snippet-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
 .pg-snippet-label {
   font-size: 10px;
   font-family: var(--hm-font-mono);
   color: var(--hm-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 8px;
+}
+
+.pg-copy-btn {
+  height: 22px;
+  padding: 0 8px;
+  font-size: 10px;
+  font-family: var(--hm-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: transparent;
+  border: 0.5px solid var(--hm-border-subtle);
+  border-radius: 4px;
+  color: var(--hm-text-tertiary);
+  cursor: pointer;
+}
+.pg-copy-btn:hover {
+  background: var(--hm-bg-elevated);
+  color: var(--hm-text-primary);
 }
 
 .pg-snippet-code {
@@ -198,7 +222,7 @@ html, body {
   color: var(--hm-text-primary);
 }
 
-.pg-control label.pg-check {
+.pg-control.pg-check {
   flex-direction: row;
   align-items: center;
   gap: 6px;
