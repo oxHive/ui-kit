@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 
 const props = defineProps({
   visible: { type: Boolean, default: false },
@@ -11,9 +11,28 @@ const props = defineProps({
 })
 
 const GAP = 8
+// Single-line height estimate used only until the first real measurement
+// lands (see watch below) — the flip decision then tracks the tooltip's
+// actual rendered height instead of a fixed guess, so multi-line text that
+// wraps taller than one line still flips correctly near the top edge.
+const FALLBACK_HEIGHT = 28
+
+const tooltipRef = ref(null)
+const measuredHeight = ref(0)
+
+watch(
+  [() => props.visible, () => props.text],
+  async () => {
+    if (!props.visible) return
+    await nextTick()
+    measuredHeight.value = tooltipRef.value?.offsetHeight ?? 0
+  },
+  { immediate: true },
+)
 
 const style = computed(() => {
-  const flipBelow = props.y < 48
+  const height = measuredHeight.value || FALLBACK_HEIGHT
+  const flipBelow = props.y - GAP - height < 0
   return {
     left: `${props.x}px`,
     top: flipBelow ? `${props.y + GAP}px` : `${props.y - GAP}px`,
@@ -24,7 +43,7 @@ const style = computed(() => {
 
 <template>
   <Teleport to="body">
-    <div v-if="visible && text" class="oxui-tooltip" :style="style">
+    <div v-if="visible && text" ref="tooltipRef" class="oxui-tooltip" :style="style">
       {{ text }}
     </div>
   </Teleport>
@@ -56,7 +75,11 @@ const style = computed(() => {
 }
 
 @keyframes oxui-tooltip-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>

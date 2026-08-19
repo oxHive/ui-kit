@@ -2,49 +2,78 @@
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import Button from './Button.vue'
 
-defineProps({ title: String, body: String, confirmLabel: String, dangerous: Boolean })
+// title/body: heading + message text.
+// confirmLabel: label for the confirm button (e.g. "Delete").
+// dangerous: styles the confirm button as the `danger` Button variant
+//   instead of `primary`, for destructive actions.
+// Emits `confirm` / `cancel`; the overlay click and Escape both emit `cancel`.
+defineProps({
+  title: { type: String, default: '' },
+  body: { type: String, default: '' },
+  confirmLabel: { type: String, default: '' },
+  dangerous: Boolean,
+})
 const emit = defineEmits(['confirm', 'cancel'])
 
 const modalRef = ref(null)
 
+// Bound to the modal's own root element (not `document`) so the trap stays
+// scoped to this instance: a keydown only reaches this handler if it bubbled
+// up from inside *this* modal's subtree, so a second concurrently-mounted
+// modal's focus trap and Escape handling can't fire for it.
 function trapFocus(e) {
-  if (!modalRef.value) return
-  const focusable = modalRef.value.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])')
-  const first = focusable[0]
-  const last = focusable[focusable.length - 1]
-  if (e.key === 'Tab') {
+  const container = modalRef.value
+  if (!container) return
+  const focusable = container.querySelectorAll(
+    'button, [href], input, [tabindex]:not([tabindex="-1"])',
+  )
+  if (e.key === 'Tab' && focusable.length > 0) {
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
     if (e.shiftKey) {
-      if (document.activeElement === first) { e.preventDefault(); last.focus() }
+      if (document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      }
     } else {
-      if (document.activeElement === last) { e.preventDefault(); first.focus() }
+      if (document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
   }
   if (e.key === 'Escape') emit('cancel')
 }
 
 onMounted(async () => {
-  document.addEventListener('keydown', trapFocus)
+  modalRef.value?.addEventListener('keydown', trapFocus)
   await nextTick()
   modalRef.value?.querySelector('button')?.focus()
 })
 
 onBeforeUnmount(() => {
-  document.removeEventListener('keydown', trapFocus)
+  modalRef.value?.removeEventListener('keydown', trapFocus)
 })
 </script>
 
 <template>
-  <div class="oxui-modal-overlay"
-    style="background:rgba(0,0,0,0.6)"
-    @click.self="$emit('cancel')">
-    <div ref="modalRef"
+  <div
+    class="oxui-modal-overlay"
+    style="background: rgba(0, 0, 0, 0.6)"
+    @click.self="$emit('cancel')"
+  >
+    <div
+      ref="modalRef"
       role="dialog"
       aria-modal="true"
       aria-labelledby="confirm-modal-title"
       class="oxui-modal"
-      style="background:var(--hm-bg-overlay); border:0.5px solid var(--hm-border-default)">
-      <h3 id="confirm-modal-title" class="oxui-modal__title" style="color:var(--hm-text-primary)">{{ title }}</h3>
-      <p class="oxui-modal__body" style="color:var(--hm-text-secondary)">{{ body }}</p>
+      style="background: var(--hm-bg-overlay); border: 0.5px solid var(--hm-border-default)"
+    >
+      <h3 id="confirm-modal-title" class="oxui-modal__title" style="color: var(--hm-text-primary)">
+        {{ title }}
+      </h3>
+      <p class="oxui-modal__body" style="color: var(--hm-text-secondary)">{{ body }}</p>
       <div class="oxui-modal__actions">
         <Button variant="default" @click="$emit('cancel')">Cancel</Button>
         <Button :variant="dangerous ? 'danger' : 'primary'" @click="$emit('confirm')">
