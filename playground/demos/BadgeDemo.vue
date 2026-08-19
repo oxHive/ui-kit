@@ -14,11 +14,15 @@ const snippet = computed(() => `<Badge label="${label.value}" color="${color.val
     <template #controls>
       <label class="pg-control">
         label
-        <input type="text" v-model="label" />
+        <input v-model="label" type="text" />
       </label>
       <label class="pg-control">
         color
-        <input type="color" v-model="color" style="height:28px; width:48px; padding:0; border:none; background:none" />
+        <input
+          v-model="color"
+          type="color"
+          style="height: 28px; width: 48px; padding: 0; border: none; background: none"
+        />
       </label>
     </template>
     <template #preview>

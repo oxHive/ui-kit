@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 
-defineProps({ title: String, description: String })
+defineProps({
+  title: { type: String, default: '' },
+  description: { type: String, default: '' },
+})
 
 const snippetEl = ref(null)
 const copied = ref(false)
@@ -23,7 +26,9 @@ async function copySnippet() {
   }
   copied.value = true
   clearTimeout(copiedTimer)
-  copiedTimer = setTimeout(() => { copied.value = false }, 1500)
+  copiedTimer = setTimeout(() => {
+    copied.value = false
+  }, 1500)
 }
 </script>
 

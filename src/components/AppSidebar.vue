@@ -1,6 +1,10 @@
 <script setup>
 import brandMark from '../assets/oxhive-mark.png'
 
+// productName: shown in the header, e.g. "Hivemind".
+// version: optional "v" + version string next to the product name.
+// Slots: #logo-icon (header icon), default (nav content), #status and
+// #footer (both rendered above the fixed OxHive brand footer).
 defineProps({
   productName: { type: String, required: true },
   version: { type: String, default: '' },
@@ -25,7 +29,14 @@ defineProps({
         <slot name="footer" />
       </div>
       <div class="oxui-sidebar__brand">
-        <img class="oxui-sidebar__brand-mark" :src="brandMark" alt="" aria-hidden="true" width="18" height="18" />
+        <img
+          class="oxui-sidebar__brand-mark"
+          :src="brandMark"
+          alt=""
+          aria-hidden="true"
+          width="18"
+          height="18"
+        />
         <span class="oxui-sidebar__brand-word">OxHive</span>
       </div>
     </div>
@@ -87,7 +98,9 @@ defineProps({
 }
 .oxui-sidebar__version {
   align-self: flex-end;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
   font-size: 10px;
   color: var(--hm-text-tertiary);
   line-height: 1;
@@ -113,7 +126,7 @@ defineProps({
   display: block;
   filter: brightness(0) invert(1);
 }
-:root[data-theme="light"] .oxui-sidebar__brand-mark {
+:root[data-theme='light'] .oxui-sidebar__brand-mark {
   filter: none;
 }
 .oxui-sidebar__brand-word {

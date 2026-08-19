@@ -38,6 +38,10 @@ defineExpose({
   outline: none;
   width: 100%;
 }
-.oxui-input:focus { border-color: var(--hm-accent); }
-.oxui-input::placeholder { color: var(--hm-text-tertiary); }
+.oxui-input:focus {
+  border-color: var(--hm-accent);
+}
+.oxui-input::placeholder {
+  color: var(--hm-text-tertiary);
+}
 </style>

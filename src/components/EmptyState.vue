@@ -1,13 +1,18 @@
 <script setup>
-defineProps({ message: String, hint: { type: String, default: '' } })
+// message: primary text (e.g. "No results found").
+// hint: optional secondary line shown below the message.
+// #icon slot: optional icon/illustration rendered above the text.
+defineProps({
+  message: { type: String, default: '' },
+  hint: { type: String, default: '' },
+})
 </script>
 
 <template>
-  <div class="oxui-empty-state"
-    style="color:var(--hm-text-tertiary)">
+  <div class="oxui-empty-state" style="color: var(--hm-text-tertiary)">
     <div class="oxui-empty-state__icon"><slot name="icon" /></div>
-    <p style="font-size:13px; color:var(--hm-text-secondary)">{{ message }}</p>
-    <p v-if="hint" style="font-size:12px">{{ hint }}</p>
+    <p style="font-size: 13px; color: var(--hm-text-secondary)">{{ message }}</p>
+    <p v-if="hint" style="font-size: 12px">{{ hint }}</p>
   </div>
 </template>
 

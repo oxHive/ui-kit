@@ -4,7 +4,9 @@ import Toast from '../src/components/Toast.vue'
 
 describe('Toast', () => {
   it('shows the message when visible', () => {
-    const wrapper = mount(Toast, { props: { visible: true, message: 'Copied: /memory-edit mem_1' } })
+    const wrapper = mount(Toast, {
+      props: { visible: true, message: 'Copied: /memory-edit mem_1' },
+    })
     expect(wrapper.text()).toContain('Copied: /memory-edit mem_1')
   })
 

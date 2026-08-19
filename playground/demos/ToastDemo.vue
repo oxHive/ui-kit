@@ -12,21 +12,26 @@ const snippet = computed(() => `<Toast :visible="visible" message="${message.val
 function show() {
   visible.value = true
   clearTimeout(timer)
-  timer = setTimeout(() => { visible.value = false }, 2200)
+  timer = setTimeout(() => {
+    visible.value = false
+  }, 2200)
 }
 </script>
 
 <template>
-  <PgSection title="Toast" description="visible / message props (timeout is the consumer's responsibility, mirrored here)">
+  <PgSection
+    title="Toast"
+    description="visible / message props (timeout is the consumer's responsibility, mirrored here)"
+  >
     <template #controls>
       <label class="pg-control">
         message
-        <input type="text" v-model="message" />
+        <input v-model="message" type="text" />
       </label>
       <Button variant="default" @click="show">Show toast</Button>
     </template>
     <template #preview>
-      <div class="pg-swatch" style="min-height:80px; width:100%">
+      <div class="pg-swatch" style="min-height: 80px; width: 100%">
         <Toast :visible="visible" :message="message" />
       </div>
     </template>

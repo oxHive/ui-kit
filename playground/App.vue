@@ -17,16 +17,21 @@ import AppSidebarDemo from './demos/AppSidebarDemo.vue'
 // instead of repeating the same dot next to every row.
 function navIcon(children) {
   return {
-    render: () => h('svg', {
-      width: 16,
-      height: 16,
-      viewBox: '0 0 16 16',
-      fill: 'none',
-      stroke: 'currentColor',
-      'stroke-width': 1.3,
-      'stroke-linecap': 'round',
-      'stroke-linejoin': 'round',
-    }, children),
+    render: () =>
+      h(
+        'svg',
+        {
+          width: 16,
+          height: 16,
+          viewBox: '0 0 16 16',
+          fill: 'none',
+          stroke: 'currentColor',
+          'stroke-width': 1.3,
+          'stroke-linecap': 'round',
+          'stroke-linejoin': 'round',
+        },
+        children,
+      ),
   }
 }
 
@@ -49,7 +54,9 @@ const SkeletonCardIcon = navIcon([
   h('line', { x1: 4.5, y1: 5.5, x2: 11.5, y2: 5.5 }),
   h('line', { x1: 4.5, y1: 8.5, x2: 9, y2: 8.5 }),
 ])
-const EmptyStateIcon = navIcon([h('rect', { x: 3, y: 6, width: 10, height: 7, rx: 1, 'stroke-dasharray': '2 2' })])
+const EmptyStateIcon = navIcon([
+  h('rect', { x: 3, y: 6, width: 10, height: 7, rx: 1, 'stroke-dasharray': '2 2' }),
+])
 const TooltipIcon = navIcon([
   h('rect', { x: 2, y: 3, width: 12, height: 7, rx: 1.5 }),
   h('path', { d: 'M5 10 L5 13 L8 10 Z', fill: 'currentColor', stroke: 'none' }),
@@ -80,12 +87,16 @@ const CATALOG = [
 const selected = ref(CATALOG[0].key)
 const selectedComponent = computed(() => CATALOG.find((c) => c.key === selected.value)?.component)
 
-const navItems = computed(() => CATALOG.map((c) => ({
-  label: c.key,
-  icon: c.icon,
-  active: c.key === selected.value,
-  onClick: () => { selected.value = c.key },
-})))
+const navItems = computed(() =>
+  CATALOG.map((c) => ({
+    label: c.key,
+    icon: c.icon,
+    active: c.key === selected.value,
+    onClick: () => {
+      selected.value = c.key
+    },
+  })),
+)
 
 const theme = ref('dark')
 function toggleTheme() {
@@ -105,7 +116,7 @@ function toggleTheme() {
         <AppNav :items="navItems" />
       </div>
       <div class="pg-sidebar__foot">
-        <button @click="toggleTheme" class="pg-theme-toggle">
+        <button class="pg-theme-toggle" @click="toggleTheme">
           {{ theme === 'dark' ? '☀ light' : '● dark' }}
         </button>
       </div>

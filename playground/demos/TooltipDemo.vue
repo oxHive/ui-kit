@@ -22,20 +22,30 @@ function onLeave() {
 </script>
 
 <template>
-  <PgSection title="Tooltip" description="text / visible / x / y; flips below when near the top of the viewport">
+  <PgSection
+    title="Tooltip"
+    description="text / visible / x / y; flips below when near the top of the viewport"
+  >
     <template #controls>
       <label class="pg-control">
         text
-        <input type="text" v-model="text" />
+        <input v-model="text" type="text" />
       </label>
     </template>
     <template #preview>
-      <div class="pg-swatch" style="width:100%">
+      <div class="pg-swatch" style="width: 100%">
         <span
-          style="padding:6px 12px; border:0.5px solid var(--hm-border-default); border-radius:4px; font-size:12px; cursor:default"
+          style="
+            padding: 6px 12px;
+            border: 0.5px solid var(--hm-border-default);
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: default;
+          "
           @mouseenter="onEnter"
           @mouseleave="onLeave"
-        >hover target</span>
+          >hover target</span
+        >
         <Tooltip :visible="visible" :text="text" :x="x" :y="y" />
       </div>
     </template>

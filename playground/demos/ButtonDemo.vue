@@ -16,7 +16,10 @@ const snippet = computed(() => {
 </script>
 
 <template>
-  <PgSection title="Button" description="variant: primary | default | danger | ghost; size: sm | md">
+  <PgSection
+    title="Button"
+    description="variant: primary | default | danger | ghost; size: sm | md"
+  >
     <template #controls>
       <label class="pg-control">
         variant
@@ -35,7 +38,7 @@ const snippet = computed(() => {
         </select>
       </label>
       <label class="pg-control pg-check">
-        <input type="checkbox" v-model="disabled" />
+        <input v-model="disabled" type="checkbox" />
         disabled
       </label>
     </template>

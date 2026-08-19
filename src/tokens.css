@@ -55,8 +55,8 @@
   --hm-accent-ring: #d9a44155;
 
   /* Typography */
-  --hm-font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --hm-font-mono: "IBM Plex Mono", "JetBrains Mono", "SF Mono", monospace;
+  --hm-font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --hm-font-mono: 'IBM Plex Mono', 'JetBrains Mono', 'SF Mono', monospace;
 
   /* Type scale */
   --hm-text-xs: 10px;
@@ -72,7 +72,7 @@
    palette reads as one identity across both modes; only surfaces, borders,
    text, and the tinted -bg/-border variants (which exist purely for
    legibility against their surface) change. */
-:root[data-theme="light"] {
+:root[data-theme='light'] {
   --hm-bg-base: #f7f4ee;
   --hm-bg-surface: #ffffff;
   --hm-bg-elevated: #efeae1;
