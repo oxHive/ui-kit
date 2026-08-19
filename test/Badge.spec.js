@@ -12,4 +12,13 @@ describe('Badge', () => {
     // literal uses the hex string verbatim (see src/components/Badge.vue).
     expect(wrapper.attributes('style')).toContain('rgb(29, 158, 117)')
   })
+
+  it('ignores a color value that is not safe CSS color syntax', () => {
+    const wrapper = mount(Badge, {
+      props: { label: 'personal', color: 'red; background:url(https://evil.example/x)' },
+    })
+    const style = wrapper.attributes('style')
+    expect(style).not.toContain('evil.example')
+    expect(style).toContain('var(--hm-bg-elevated)')
+  })
 })
