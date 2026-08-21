@@ -1,7 +1,9 @@
 <script setup>
+// variant: primary | default | danger | ghost
+// size: sm | md | lg
 defineProps({
-  variant: { type: String, default: 'default' }, // primary | default | danger | ghost
-  size: { type: String, default: 'md' }, // sm | md | lg
+  variant: { type: String, default: 'default' },
+  size: { type: String, default: 'md' },
 })
 </script>
 
@@ -42,24 +44,35 @@ defineProps({
   color: var(--hm-bg-base);
   font-weight: 500;
 }
-.oxui-btn-primary:hover { background: #ffffff; }
+.oxui-btn-primary:hover {
+  background: #ffffff;
+}
 .oxui-btn-default {
   background: transparent;
   border-color: var(--hm-border-subtle);
   color: var(--hm-text-secondary);
 }
-.oxui-btn-default:hover { background: var(--hm-bg-elevated); }
+.oxui-btn-default:hover {
+  background: var(--hm-bg-elevated);
+}
 .oxui-btn-danger {
   background: var(--hm-danger-bg);
   border-color: var(--hm-danger-border);
   color: var(--hm-danger);
 }
-.oxui-btn-danger:hover { background: color-mix(in srgb, var(--hm-danger-bg) 70%, var(--hm-danger)); }
+.oxui-btn-danger:hover {
+  background: color-mix(in srgb, var(--hm-danger-bg) 70%, var(--hm-danger));
+}
 .oxui-btn-ghost {
   background: transparent;
   border-color: transparent;
   color: var(--hm-text-secondary);
 }
-.oxui-btn-ghost:hover { background: var(--hm-bg-elevated); }
-.oxui-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.oxui-btn-ghost:hover {
+  background: var(--hm-bg-elevated);
+}
+.oxui-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 </style>

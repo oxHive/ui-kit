@@ -1,8 +1,11 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   min-height: 100%;
   background: var(--hm-bg-base);
@@ -212,7 +215,7 @@ html, body {
 }
 
 .pg-control select,
-.pg-control input[type="text"] {
+.pg-control input[type='text'] {
   height: 28px;
   padding: 0 8px;
   font-size: 12px;
@@ -278,7 +281,7 @@ html, body {
   }
 
   .pg-control select,
-  .pg-control input[type="text"] {
+  .pg-control input[type='text'] {
     width: 100%;
   }
 
