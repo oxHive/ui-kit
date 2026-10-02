@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   shows a transient "Copied" label, and emits `copied` / `error`. Default
   slot receives `{ copied }` for icon-only buttons. The playground's snippet
   copy button now uses it.
+- `Menu`: a button that opens a list of string `items` above or below it
+  (`placement`) and emits `select`. Follows the ARIA menu-button pattern:
+  `aria-haspopup` / `aria-expanded`, arrow/Home/End navigation, Escape and
+  outside-click close with focus returned to the trigger.
 
 ## [0.2.0] - 2026-10-02
 

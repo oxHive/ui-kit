@@ -5,6 +5,7 @@ import ButtonDemo from './demos/ButtonDemo.vue'
 import CopyButtonDemo from './demos/CopyButtonDemo.vue'
 import InputDemo from './demos/InputDemo.vue'
 import BadgeDemo from './demos/BadgeDemo.vue'
+import MenuDemo from './demos/MenuDemo.vue'
 import ModalDemo from './demos/ModalDemo.vue'
 import ToastDemo from './demos/ToastDemo.vue'
 import SkeletonCardDemo from './demos/SkeletonCardDemo.vue'
@@ -46,6 +47,12 @@ const InputIcon = navIcon([
   h('line', { x1: 5, y1: 6.5, x2: 5, y2: 9.5 }),
 ])
 const BadgeIcon = navIcon([h('rect', { x: 4, y: 6, width: 8, height: 4, rx: 2 })])
+const MenuIcon = navIcon([
+  h('rect', { x: 2, y: 2, width: 12, height: 12, rx: 1.5 }),
+  h('line', { x1: 5, y1: 5.5, x2: 11, y2: 5.5 }),
+  h('line', { x1: 5, y1: 8, x2: 11, y2: 8 }),
+  h('line', { x1: 5, y1: 10.5, x2: 11, y2: 10.5 }),
+])
 const ModalIcon = navIcon([
   h('rect', { x: 2, y: 2.5, width: 12, height: 11, rx: 1.5 }),
   h('line', { x1: 2, y1: 6, x2: 14, y2: 6 }),
@@ -81,6 +88,7 @@ const CATALOG = [
   { key: 'CopyButton', component: CopyButtonDemo, icon: CopyButtonIcon },
   { key: 'Input', component: InputDemo, icon: InputIcon },
   { key: 'Badge', component: BadgeDemo, icon: BadgeIcon },
+  { key: 'Menu', component: MenuDemo, icon: MenuIcon },
   { key: 'Modal', component: ModalDemo, icon: ModalIcon },
   { key: 'Toast', component: ToastDemo, icon: ToastIcon },
   { key: 'SkeletonCard', component: SkeletonCardDemo, icon: SkeletonCardIcon },
