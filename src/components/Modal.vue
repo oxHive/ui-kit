@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref, onMounted, onBeforeUnmount, nextTick, useId } from 'vue'
 import Button from './Button.vue'
 
 // title/body: heading + message text.
@@ -7,6 +7,13 @@ import Button from './Button.vue'
 // dangerous: styles the confirm button as the `danger` Button variant
 //   instead of `primary`, for destructive actions.
 // Emits `confirm` / `cancel`; the overlay click and Escape both emit `cancel`.
+// To block dismissal (e.g. mid-operation), ignore `cancel` in the parent.
+//
+// Slots: default replaces the `body` paragraph; `actions` replaces the
+// Cancel/Confirm row (for disabled/busy buttons or a different button set).
+// Fallthrough attrs (class, style, aria-*) land on the dialog box, not the
+// overlay, so consumers can set its width or border.
+defineOptions({ inheritAttrs: false })
 defineProps({
   title: { type: String, default: '' },
   body: { type: String, default: '' },
@@ -16,6 +23,7 @@ defineProps({
 const emit = defineEmits(['confirm', 'cancel'])
 
 const modalRef = ref(null)
+const titleId = useId()
 
 // Bound to the modal's own root element (not `document`) so the trap stays
 // scoped to this instance: a keydown only reaches this handler if it bubbled
@@ -25,7 +33,7 @@ function trapFocus(e) {
   const container = modalRef.value
   if (!container) return
   const focusable = container.querySelectorAll(
-    'button, [href], input, [tabindex]:not([tabindex="-1"])',
+    'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
   )
   if (e.key === 'Tab' && focusable.length > 0) {
     const first = focusable[0]
@@ -48,7 +56,7 @@ function trapFocus(e) {
 onMounted(async () => {
   modalRef.value?.addEventListener('keydown', trapFocus)
   await nextTick()
-  modalRef.value?.querySelector('button')?.focus()
+  modalRef.value?.querySelector('button:not([disabled])')?.focus()
 })
 
 onBeforeUnmount(() => {
@@ -66,19 +74,24 @@ onBeforeUnmount(() => {
       ref="modalRef"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="confirm-modal-title"
+      :aria-labelledby="titleId"
       class="oxui-modal"
       style="background: var(--hm-bg-overlay); border: 0.5px solid var(--hm-border-default)"
+      v-bind="$attrs"
     >
-      <h3 id="confirm-modal-title" class="oxui-modal__title" style="color: var(--hm-text-primary)">
+      <h3 :id="titleId" class="oxui-modal__title" style="color: var(--hm-text-primary)">
         {{ title }}
       </h3>
-      <p class="oxui-modal__body" style="color: var(--hm-text-secondary)">{{ body }}</p>
+      <div class="oxui-modal__body" style="color: var(--hm-text-secondary)">
+        <slot>{{ body }}</slot>
+      </div>
       <div class="oxui-modal__actions">
-        <Button variant="default" @click="$emit('cancel')">Cancel</Button>
-        <Button :variant="dangerous ? 'danger' : 'primary'" @click="$emit('confirm')">
-          {{ confirmLabel }}
-        </Button>
+        <slot name="actions">
+          <Button variant="default" @click="$emit('cancel')">Cancel</Button>
+          <Button :variant="dangerous ? 'danger' : 'primary'" @click="$emit('confirm')">
+            {{ confirmLabel }}
+          </Button>
+        </slot>
       </div>
     </div>
   </div>

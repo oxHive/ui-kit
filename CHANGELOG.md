@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `Modal` now applies fallthrough attributes (`class`, `style`, `aria-*`) to
+  the dialog box instead of the overlay, so consumers can size or restyle it.
+- `Modal`'s title id is generated per instance (`useId()`) instead of the
+  fixed `confirm-modal-title`, so concurrent modals no longer share an id.
+- `Modal`'s focus trap skips disabled controls and includes `select` /
+  `textarea`, so Tab can't escape past a disabled last button.
+
 ### Security
 
 - `Badge`'s `color` prop is now validated against safe CSS color syntax
@@ -18,6 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Modal` default slot (replaces `body`) and `actions` slot (replaces the
+  Cancel/Confirm row), so custom dialogs — type-to-confirm, busy/disabled
+  buttons, rich content — reuse its overlay, focus trap, and Escape handling.
 - `ci.yml` GitHub Actions workflow: lints, checks formatting, runs tests,
   and builds the library + playground on every pull request and push to
   `main`.
