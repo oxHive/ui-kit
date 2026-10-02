@@ -88,4 +88,51 @@ describe('Modal', () => {
     modalA.unmount()
     modalB.unmount()
   })
+
+  it('renders default and actions slots in place of body and the button row', () => {
+    const wrapper = mount(Modal, {
+      props: { title: 'Revoke device', body: 'unused' },
+      slots: {
+        default: '<strong>laptop</strong> will be revoked.',
+        actions: '<button disabled>Revoking…</button>',
+      },
+    })
+    expect(wrapper.find('strong').text()).toBe('laptop')
+    expect(wrapper.text()).not.toContain('unused')
+    expect(wrapper.findAll('button').map((b) => b.text())).toEqual(['Revoking…'])
+  })
+
+  it('puts fallthrough attrs on the dialog and gives each title a unique id', () => {
+    // useId() is unique per app, so both modals must share one app.
+    const wrapper = mount({
+      components: { Modal },
+      template: `<div><Modal title="A" style="width: 28rem" /><Modal title="B" /></div>`,
+    })
+    const [a, b] = wrapper.findAllComponents(Modal)
+    const dialog = a.find('[role="dialog"]')
+    expect(dialog.attributes('style')).toContain('width: 28rem')
+    expect(a.find('.oxui-modal-overlay').attributes('style')).not.toContain('width')
+    const idA = dialog.attributes('aria-labelledby')
+    expect(a.find('h3').attributes('id')).toBe(idA)
+    expect(b.find('[role="dialog"]').attributes('aria-labelledby')).not.toBe(idA)
+  })
+
+  it('skips disabled controls when trapping focus', async () => {
+    const wrapper = mount(Modal, {
+      props: { title: 'Confirm deletion' },
+      slots: { actions: '<button id="cancel">Cancel</button><button disabled>Clear</button>' },
+      attachTo: document.body,
+    })
+    await nextTick()
+    await flushPromises()
+
+    const cancel = wrapper.find('#cancel').element
+    expect(document.activeElement).toBe(cancel)
+    cancel.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true }),
+    )
+    expect(document.activeElement).toBe(cancel)
+
+    wrapper.unmount()
+  })
 })
