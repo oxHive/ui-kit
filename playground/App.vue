@@ -8,6 +8,7 @@ import BadgeDemo from './demos/BadgeDemo.vue'
 import MenuDemo from './demos/MenuDemo.vue'
 import ModalDemo from './demos/ModalDemo.vue'
 import ToastDemo from './demos/ToastDemo.vue'
+import SegmentedControlDemo from './demos/SegmentedControlDemo.vue'
 import SkeletonCardDemo from './demos/SkeletonCardDemo.vue'
 import EmptyStateDemo from './demos/EmptyStateDemo.vue'
 import TooltipDemo from './demos/TooltipDemo.vue'
@@ -61,6 +62,10 @@ const ToastIcon = navIcon([
   h('rect', { x: 2, y: 9.5, width: 12, height: 4, rx: 2 }),
   h('circle', { cx: 4.7, cy: 11.5, r: 0.9, fill: 'currentColor', stroke: 'none' }),
 ])
+const SegmentedControlIcon = navIcon([
+  h('rect', { x: 1.5, y: 5, width: 13, height: 6, rx: 2 }),
+  h('rect', { x: 2.5, y: 6, width: 5, height: 4, rx: 1, fill: 'currentColor', stroke: 'none' }),
+])
 const SkeletonCardIcon = navIcon([
   h('rect', { x: 2, y: 2, width: 12, height: 12, rx: 1.5 }),
   h('line', { x1: 4.5, y1: 5.5, x2: 11.5, y2: 5.5 }),
@@ -91,6 +96,7 @@ const CATALOG = [
   { key: 'Menu', component: MenuDemo, icon: MenuIcon },
   { key: 'Modal', component: ModalDemo, icon: ModalIcon },
   { key: 'Toast', component: ToastDemo, icon: ToastIcon },
+  { key: 'SegmentedControl', component: SegmentedControlDemo, icon: SegmentedControlIcon },
   { key: 'SkeletonCard', component: SkeletonCardDemo, icon: SkeletonCardIcon },
   { key: 'EmptyState', component: EmptyStateDemo, icon: EmptyStateIcon },
   { key: 'Tooltip', component: TooltipDemo, icon: TooltipIcon },

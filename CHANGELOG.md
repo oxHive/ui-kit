@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (`placement`) and emits `select`. Follows the ARIA menu-button pattern:
   `aria-haspopup` / `aria-expanded`, arrow/Home/End navigation, Escape and
   outside-click close with focus returned to the trigger.
+- `SegmentedControl`: a `v-model` radio group of `{ label, value,
+description? }` options with a single Tab stop and arrow-key selection;
+  descriptions show as a `Tooltip` on hover or focus. `disabled` keeps the
+  current value visible but blocks changes.
 
 ## [0.2.0] - 2026-10-02
 
