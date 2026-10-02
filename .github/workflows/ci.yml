@@ -4,6 +4,8 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Called by publish.yml so a tag only publishes after CI passes on it.
+  workflow_call:
 
 permissions:
   contents: read
