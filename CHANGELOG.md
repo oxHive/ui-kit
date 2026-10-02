@@ -7,22 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-
-- `CopyButton`: copies `text` (a string, or a function read at click time)
-  to the clipboard with an `execCommand` fallback for non-secure contexts,
-  shows a transient "Copied" label, and emits `copied` / `error`. Default
-  slot receives `{ copied }` for icon-only buttons. The playground's snippet
-  copy button now uses it.
-- `Menu`: a button that opens a list of string `items` above or below it
-  (`placement`) and emits `select`. Follows the ARIA menu-button pattern:
-  `aria-haspopup` / `aria-expanded`, arrow/Home/End navigation, Escape and
-  outside-click close with focus returned to the trigger.
-- `SegmentedControl`: a `v-model` radio group of `{ label, value,
-description? }` options with a single Tab stop and arrow-key selection;
-  descriptions show as a `Tooltip` on hover or focus. `disabled` keeps the
-  current value visible but blocks changes.
-
 ## [0.2.0] - 2026-10-02
 
 First release published to npm.
@@ -56,6 +40,22 @@ First release published to npm.
 - `Modal` default slot (replaces `body`) and `actions` slot (replaces the
   Cancel/Confirm row), so custom dialogs — type-to-confirm, busy/disabled
   buttons, rich content — reuse its overlay, focus trap, and Escape handling.
+- `CopyButton`: copies `text` (a string, or a function read at click time)
+  to the clipboard with an `execCommand` fallback for non-secure contexts,
+  shows a transient "Copied" label, and emits `copied` / `error`. Default
+  slot receives `{ copied }` for icon-only buttons. The playground's snippet
+  copy button now uses it.
+- `Menu`: a button that opens a list of string `items` above or below it
+  (`placement`) and emits `select`. Follows the ARIA menu-button pattern:
+  `aria-haspopup` / `aria-expanded`, arrow/Home/End navigation, Escape and
+  outside-click close with focus returned to the trigger.
+- `SegmentedControl`: a `v-model` radio group of options shaped
+  `{ label, value, description? }`, with a single Tab stop and arrow-key
+  selection; descriptions show as a `Tooltip` on hover or focus. `disabled`
+  keeps the current value visible but blocks changes.
+- `publish.yml` GitHub Actions workflow: on a stable `vX.Y.Z` tag, runs CI
+  and then publishes to npm with provenance via the shared
+  `oxHive/pipelines` `npm-publish.yml` workflow.
 - `ci.yml` GitHub Actions workflow: lints, checks formatting, runs tests,
   and builds the library + playground on every pull request and push to
   `main`.
