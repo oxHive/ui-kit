@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-02
+
+First release published to npm.
+
 ### Changed
 
 - `Modal` now applies fallthrough attributes (`class`, `style`, `aria-*`) to
@@ -15,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   fixed `confirm-modal-title`, so concurrent modals no longer share an id.
 - `Modal`'s focus trap skips disabled controls and includes `select` /
   `textarea`, so Tab can't escape past a disabled last button.
+
+### Fixed
+
+- The published package now includes `src/tokens.css` and
+  `src/tailwind-preset.js`; the `./tokens.css` and `./tailwind-preset.js`
+  exports previously pointed at files missing from the tarball.
 
 ### Security
 
