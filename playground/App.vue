@@ -2,6 +2,7 @@
 import { ref, h, computed } from 'vue'
 import { AppNav } from '../src/index.js'
 import ButtonDemo from './demos/ButtonDemo.vue'
+import CopyButtonDemo from './demos/CopyButtonDemo.vue'
 import InputDemo from './demos/InputDemo.vue'
 import BadgeDemo from './demos/BadgeDemo.vue'
 import ModalDemo from './demos/ModalDemo.vue'
@@ -36,6 +37,10 @@ function navIcon(children) {
 }
 
 const ButtonIcon = navIcon([h('rect', { x: 2, y: 5.5, width: 12, height: 5, rx: 2.5 })])
+const CopyButtonIcon = navIcon([
+  h('rect', { x: 5, y: 5, width: 8.5, height: 8.5, rx: 1.5 }),
+  h('path', { d: 'M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5' }),
+])
 const InputIcon = navIcon([
   h('rect', { x: 2, y: 5.5, width: 12, height: 5, rx: 1 }),
   h('line', { x1: 5, y1: 6.5, x2: 5, y2: 9.5 }),
@@ -73,6 +78,7 @@ const AppSidebarIcon = navIcon([
 
 const CATALOG = [
   { key: 'Button', component: ButtonDemo, icon: ButtonIcon },
+  { key: 'CopyButton', component: CopyButtonDemo, icon: CopyButtonIcon },
   { key: 'Input', component: InputDemo, icon: InputIcon },
   { key: 'Badge', component: BadgeDemo, icon: BadgeIcon },
   { key: 'Modal', component: ModalDemo, icon: ModalIcon },

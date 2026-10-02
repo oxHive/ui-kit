@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `CopyButton`: copies `text` (a string, or a function read at click time)
+  to the clipboard with an `execCommand` fallback for non-secure contexts,
+  shows a transient "Copied" label, and emits `copied` / `error`. Default
+  slot receives `{ copied }` for icon-only buttons. The playground's snippet
+  copy button now uses it.
+
 ## [0.2.0] - 2026-10-02
 
 First release published to npm.

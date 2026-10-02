@@ -151,24 +151,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-.pg-copy-btn {
-  height: 22px;
-  padding: 0 8px;
-  font-size: 10px;
-  font-family: var(--hm-font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  background: transparent;
-  border: 0.5px solid var(--hm-border-subtle);
-  border-radius: 4px;
-  color: var(--hm-text-tertiary);
-  cursor: pointer;
-}
-.pg-copy-btn:hover {
-  background: var(--hm-bg-elevated);
-  color: var(--hm-text-primary);
-}
-
 .pg-snippet-code {
   flex: 1;
   margin: 0;
