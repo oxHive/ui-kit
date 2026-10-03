@@ -2,6 +2,7 @@
 import { ref, h, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { AppSidebar, AppNav, SegmentedControl } from '../src/index.js'
 import pkg from '../package.json'
+import brandMark from '../src/assets/oxhive-mark.png'
 import Overview from './Overview.vue'
 import { GROUPS, CATALOG } from './catalog.js'
 
@@ -111,15 +112,7 @@ watch(theme, (value) => {
     <div id="pg-sidebar" class="pg-sidebar">
       <AppSidebar product-name="@oxhive/ui" :version="pkg.version">
         <template #logo-icon>
-          <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true">
-            <polygon
-              points="8,1.5 13.6,4.75 13.6,11.25 8,14.5 2.4,11.25 2.4,4.75"
-              fill="none"
-              stroke="var(--hm-accent)"
-              stroke-width="1.3"
-            />
-            <circle cx="8" cy="8" r="2" fill="var(--hm-accent)" />
-          </svg>
+          <img class="pg-logo" :src="brandMark" alt="" width="22" height="22" />
         </template>
 
         <div class="pg-nav">
