@@ -1,0 +1,32 @@
+{
+  "pkg": "@oxhive/ui",
+  "globalName": "OxhiveUi",
+  "shape": "package",
+  "buildCmd": "bun run build",
+  "projectId": "9b9fb81e-e4c7-4e3d-bf41-9afad8a83f85",
+  "overrides": {
+    "Button": {
+      "cardMode": "column"
+    },
+    "AppSidebar": {
+      "cardMode": "column"
+    },
+    "Modal": {
+      "cardMode": "single",
+      "primaryStory": "Dangerous"
+    },
+    "Toast": {
+      "cardMode": "single",
+      "primaryStory": "Visible"
+    },
+    "Tooltip": {
+      "cardMode": "single",
+      "primaryStory": "AboveTarget",
+      "viewport": "480x200"
+    },
+    "EmptyState": {
+      "cardMode": "column"
+    }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}

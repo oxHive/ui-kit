@@ -25,10 +25,12 @@ describe('CopyButton', () => {
     expect(writeText).toHaveBeenCalledWith('mynd status')
     expect(wrapper.emitted('copied')).toEqual([['mynd status']])
     expect(wrapper.text()).toBe('Copied')
+    expect(wrapper.classes()).toContain('oxui-copy--copied')
 
     vi.advanceTimersByTime(1500)
     await flushPromises()
     expect(wrapper.text()).toBe('Copy')
+    expect(wrapper.classes()).not.toContain('oxui-copy--copied')
   })
 
   it('reads a function text at click time', async () => {

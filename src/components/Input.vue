@@ -29,19 +29,19 @@ defineExpose({
 .oxui-input {
   height: 32px;
   padding: 0 10px;
-  font-size: 13px;
-  font-family: var(--hm-font-sans);
-  background: var(--hm-bg-elevated);
-  border: 0.5px solid var(--hm-border-subtle);
+  font-size: var(--oxui-text-md);
+  font-family: var(--oxui-font-sans);
+  background: var(--oxui-bg-elevated);
+  border: 0.5px solid var(--oxui-border-subtle);
   border-radius: 6px;
-  color: var(--hm-text-primary);
+  color: var(--oxui-text-primary);
   outline: none;
   width: 100%;
 }
 .oxui-input:focus {
-  border-color: var(--hm-accent);
+  border-color: var(--oxui-accent);
 }
 .oxui-input::placeholder {
-  color: var(--hm-text-tertiary);
+  color: var(--oxui-text-tertiary);
 }
 </style>

@@ -2,3 +2,7 @@ dist/
 playground/dist/
 node_modules/
 bun.lock
+
+# /design-sync build output
+ds-bundle
+.ds-sync

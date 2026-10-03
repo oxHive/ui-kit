@@ -1,148 +1,166 @@
 <script setup>
-import { ref, h, computed } from 'vue'
-import { AppNav } from '../src/index.js'
-import ButtonDemo from './demos/ButtonDemo.vue'
-import CopyButtonDemo from './demos/CopyButtonDemo.vue'
-import InputDemo from './demos/InputDemo.vue'
-import BadgeDemo from './demos/BadgeDemo.vue'
-import MenuDemo from './demos/MenuDemo.vue'
-import ModalDemo from './demos/ModalDemo.vue'
-import ToastDemo from './demos/ToastDemo.vue'
-import SegmentedControlDemo from './demos/SegmentedControlDemo.vue'
-import SkeletonCardDemo from './demos/SkeletonCardDemo.vue'
-import EmptyStateDemo from './demos/EmptyStateDemo.vue'
-import TooltipDemo from './demos/TooltipDemo.vue'
-import AppNavDemo from './demos/AppNavDemo.vue'
-import AppSidebarDemo from './demos/AppSidebarDemo.vue'
+import { ref, h, computed, watch, onMounted, onBeforeUnmount } from 'vue'
+import { AppSidebar, AppNav, SegmentedControl } from '../src/index.js'
+import pkg from '../package.json'
+import brandMark from '../src/assets/oxhive-mark.png'
+import Overview from './Overview.vue'
+import { GROUPS, CATALOG } from './catalog.js'
 
-// Each catalog entry gets its own small line icon hinting at the shape
-// of the component it represents, so the sidebar reads at a glance
-// instead of repeating the same dot next to every row.
-function navIcon(children) {
-  return {
-    render: () =>
-      h(
-        'svg',
-        {
-          width: 16,
-          height: 16,
-          viewBox: '0 0 16 16',
-          fill: 'none',
-          stroke: 'currentColor',
-          'stroke-width': 1.3,
-          'stroke-linecap': 'round',
-          'stroke-linejoin': 'round',
-        },
-        children,
-      ),
-  }
+// Hash routing (#/Button) so every page is linkable and the build works
+// under any base path without server rewrites.
+const route = ref('')
+function readHash() {
+  route.value = decodeURIComponent(location.hash.replace(/^#\/?/, ''))
+}
+onMounted(() => {
+  readHash()
+  window.addEventListener('hashchange', readHash)
+})
+onBeforeUnmount(() => window.removeEventListener('hashchange', readHash))
+
+const current = computed(() => CATALOG.find((c) => c.key === route.value))
+const index = computed(() => CATALOG.indexOf(current.value))
+const prev = computed(() => CATALOG[index.value - 1])
+const next = computed(() => CATALOG[index.value + 1])
+
+const mainEl = ref(null)
+const navOpen = ref(false)
+watch(route, () => {
+  navOpen.value = false
+  mainEl.value?.scrollTo(0, 0)
+  document.title = current.value ? `${current.value.key} · @oxhive/ui` : '@oxhive/ui playground'
+})
+
+function go(key) {
+  location.hash = key ? `/${key}` : ''
 }
 
-const ButtonIcon = navIcon([h('rect', { x: 2, y: 5.5, width: 12, height: 5, rx: 2.5 })])
-const CopyButtonIcon = navIcon([
-  h('rect', { x: 5, y: 5, width: 8.5, height: 8.5, rx: 1.5 }),
-  h('path', { d: 'M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5' }),
-])
-const InputIcon = navIcon([
-  h('rect', { x: 2, y: 5.5, width: 12, height: 5, rx: 1 }),
-  h('line', { x1: 5, y1: 6.5, x2: 5, y2: 9.5 }),
-])
-const BadgeIcon = navIcon([h('rect', { x: 4, y: 6, width: 8, height: 4, rx: 2 })])
-const MenuIcon = navIcon([
-  h('rect', { x: 2, y: 2, width: 12, height: 12, rx: 1.5 }),
-  h('line', { x1: 5, y1: 5.5, x2: 11, y2: 5.5 }),
-  h('line', { x1: 5, y1: 8, x2: 11, y2: 8 }),
-  h('line', { x1: 5, y1: 10.5, x2: 11, y2: 10.5 }),
-])
-const ModalIcon = navIcon([
-  h('rect', { x: 2, y: 2.5, width: 12, height: 11, rx: 1.5 }),
-  h('line', { x1: 2, y1: 6, x2: 14, y2: 6 }),
-])
-const ToastIcon = navIcon([
-  h('rect', { x: 2, y: 9.5, width: 12, height: 4, rx: 2 }),
-  h('circle', { cx: 4.7, cy: 11.5, r: 0.9, fill: 'currentColor', stroke: 'none' }),
-])
-const SegmentedControlIcon = navIcon([
-  h('rect', { x: 1.5, y: 5, width: 13, height: 6, rx: 2 }),
-  h('rect', { x: 2.5, y: 6, width: 5, height: 4, rx: 1, fill: 'currentColor', stroke: 'none' }),
-])
-const SkeletonCardIcon = navIcon([
-  h('rect', { x: 2, y: 2, width: 12, height: 12, rx: 1.5 }),
-  h('line', { x1: 4.5, y1: 5.5, x2: 11.5, y2: 5.5 }),
-  h('line', { x1: 4.5, y1: 8.5, x2: 9, y2: 8.5 }),
-])
-const EmptyStateIcon = navIcon([
-  h('rect', { x: 3, y: 6, width: 10, height: 7, rx: 1, 'stroke-dasharray': '2 2' }),
-])
-const TooltipIcon = navIcon([
-  h('rect', { x: 2, y: 3, width: 12, height: 7, rx: 1.5 }),
-  h('path', { d: 'M5 10 L5 13 L8 10 Z', fill: 'currentColor', stroke: 'none' }),
-])
-const AppNavIcon = navIcon([
-  h('line', { x1: 3, y1: 4, x2: 13, y2: 4 }),
-  h('line', { x1: 3, y1: 8, x2: 13, y2: 8 }),
-  h('line', { x1: 3, y1: 12, x2: 13, y2: 12 }),
-])
-const AppSidebarIcon = navIcon([
-  h('rect', { x: 2, y: 2, width: 12, height: 12, rx: 1.5 }),
-  h('line', { x1: 6, y1: 2, x2: 6, y2: 14 }),
-])
+const OverviewIcon = {
+  render: () =>
+    h(
+      'svg',
+      {
+        width: 16,
+        height: 16,
+        viewBox: '0 0 16 16',
+        fill: 'none',
+        stroke: 'currentColor',
+        'stroke-width': 1.3,
+      },
+      [
+        h('rect', { x: 2, y: 2, width: 5, height: 5, rx: 1 }),
+        h('rect', { x: 9, y: 2, width: 5, height: 5, rx: 1 }),
+        h('rect', { x: 2, y: 9, width: 5, height: 5, rx: 1 }),
+        h('rect', { x: 9, y: 9, width: 5, height: 5, rx: 1 }),
+      ],
+    ),
+}
 
-const CATALOG = [
-  { key: 'Button', component: ButtonDemo, icon: ButtonIcon },
-  { key: 'CopyButton', component: CopyButtonDemo, icon: CopyButtonIcon },
-  { key: 'Input', component: InputDemo, icon: InputIcon },
-  { key: 'Badge', component: BadgeDemo, icon: BadgeIcon },
-  { key: 'Menu', component: MenuDemo, icon: MenuIcon },
-  { key: 'Modal', component: ModalDemo, icon: ModalIcon },
-  { key: 'Toast', component: ToastDemo, icon: ToastIcon },
-  { key: 'SegmentedControl', component: SegmentedControlDemo, icon: SegmentedControlIcon },
-  { key: 'SkeletonCard', component: SkeletonCardDemo, icon: SkeletonCardIcon },
-  { key: 'EmptyState', component: EmptyStateDemo, icon: EmptyStateIcon },
-  { key: 'Tooltip', component: TooltipDemo, icon: TooltipIcon },
-  { key: 'AppNav', component: AppNavDemo, icon: AppNavIcon },
-  { key: 'AppSidebar', component: AppSidebarDemo, icon: AppSidebarIcon },
-]
-
-const selected = ref(CATALOG[0].key)
-const selectedComponent = computed(() => CATALOG.find((c) => c.key === selected.value)?.component)
-
-const navItems = computed(() =>
-  CATALOG.map((c) => ({
-    label: c.key,
-    icon: c.icon,
-    active: c.key === selected.value,
-    onClick: () => {
-      selected.value = c.key
-    },
+const overviewNav = computed(() => [
+  { label: 'Overview', icon: OverviewIcon, active: !current.value, onClick: () => go('') },
+])
+const groupNav = computed(() =>
+  GROUPS.map((group) => ({
+    group,
+    items: CATALOG.filter((c) => c.group === group).map((c) => ({
+      label: c.key,
+      icon: c.icon,
+      active: c.key === route.value,
+      onClick: () => go(c.key),
+    })),
   })),
 )
 
-const theme = ref('dark')
-function toggleTheme() {
-  theme.value = theme.value === 'dark' ? 'light' : 'dark'
-  document.documentElement.setAttribute('data-theme', theme.value)
-}
+const theme = ref(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark')
+watch(theme, (value) => {
+  document.documentElement.dataset.theme = value
+  try {
+    localStorage.setItem('oxui-pg-theme', value)
+  } catch {
+    // Private mode or blocked storage: the choice just won't persist.
+  }
+})
 </script>
 
 <template>
-  <div class="pg-shell">
-    <nav class="pg-sidebar">
-      <div class="pg-sidebar__head">
-        <div class="pg-sidebar__title">@oxhive/ui</div>
-        <div class="pg-sidebar__subtitle">component catalog</div>
+  <div class="pg-shell" :class="{ 'pg-shell--nav-open': navOpen }">
+    <header class="pg-topbar">
+      <button
+        type="button"
+        class="pg-topbar__toggle"
+        :aria-expanded="navOpen"
+        aria-controls="pg-sidebar"
+        @click="navOpen = !navOpen"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M2.5 4h11M2.5 8h11M2.5 12h11" />
+        </svg>
+        <span>{{ current ? current.key : 'Overview' }}</span>
+      </button>
+      <span class="pg-topbar__brand">@oxhive/ui</span>
+    </header>
+
+    <div id="pg-sidebar" class="pg-sidebar">
+      <AppSidebar product-name="@oxhive/ui" :version="pkg.version">
+        <template #logo-icon>
+          <img class="pg-logo" :src="brandMark" alt="" width="22" height="22" />
+        </template>
+
+        <div class="pg-nav">
+          <AppNav :items="overviewNav" />
+          <div v-for="g in groupNav" :key="g.group">
+            <div class="pg-nav__group">{{ g.group }}</div>
+            <AppNav :items="g.items" />
+          </div>
+        </div>
+
+        <template #status>
+          <div class="pg-sidebar__theme">
+            <SegmentedControl
+              v-model="theme"
+              :options="[
+                { label: 'Dark', value: 'dark' },
+                { label: 'Light', value: 'light' },
+              ]"
+              aria-label="Theme"
+            />
+          </div>
+        </template>
+        <template #footer>
+          <a class="pg-sidebar__link" href="https://github.com/oxHive/ui-kit"
+            >github.com/oxHive/ui-kit</a
+          >
+        </template>
+      </AppSidebar>
+    </div>
+    <div class="pg-scrim" aria-hidden="true" @click="navOpen = false" />
+
+    <main ref="mainEl" class="pg-main">
+      <div class="pg-content">
+        <component :is="current.component" v-if="current" :key="current.key" />
+        <Overview v-else />
+
+        <nav v-if="current" class="pg-pager" aria-label="Pagination">
+          <a v-if="prev" class="pg-pager__link" :href="`#/${prev.key}`">
+            <span class="pg-pager__dir">Previous</span>{{ prev.key }}
+          </a>
+          <a v-else class="pg-pager__link" href="#">
+            <span class="pg-pager__dir">Previous</span>Overview
+          </a>
+          <a v-if="next" class="pg-pager__link pg-pager__link--next" :href="`#/${next.key}`">
+            <span class="pg-pager__dir">Next</span>{{ next.key }}
+          </a>
+        </nav>
       </div>
-      <div class="pg-sidebar__nav">
-        <AppNav :items="navItems" />
-      </div>
-      <div class="pg-sidebar__foot">
-        <button class="pg-theme-toggle" @click="toggleTheme">
-          {{ theme === 'dark' ? '☀ light' : '● dark' }}
-        </button>
-      </div>
-    </nav>
-    <main class="pg-stage">
-      <component :is="selectedComponent" />
     </main>
   </div>
 </template>

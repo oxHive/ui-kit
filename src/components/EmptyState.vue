@@ -9,10 +9,10 @@ defineProps({
 </script>
 
 <template>
-  <div class="oxui-empty-state" style="color: var(--hm-text-tertiary)">
+  <div class="oxui-empty-state" style="color: var(--oxui-text-tertiary)">
     <div class="oxui-empty-state__icon"><slot name="icon" /></div>
-    <p style="font-size: 13px; color: var(--hm-text-secondary)">{{ message }}</p>
-    <p v-if="hint" style="font-size: 12px">{{ hint }}</p>
+    <p style="font-size: var(--oxui-text-md); color: var(--oxui-text-secondary)">{{ message }}</p>
+    <p v-if="hint" style="font-size: var(--oxui-text-base)">{{ hint }}</p>
   </div>
 </template>
 

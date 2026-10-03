@@ -19,6 +19,6 @@ describe('Badge', () => {
     })
     const style = wrapper.attributes('style')
     expect(style).not.toContain('evil.example')
-    expect(style).toContain('var(--hm-bg-elevated)')
+    expect(style).toContain('var(--oxui-bg-elevated)')
   })
 })

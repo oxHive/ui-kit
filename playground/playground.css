@@ -7,18 +7,43 @@
 html,
 body {
   margin: 0;
-  min-height: 100%;
-  background: var(--hm-bg-base);
-  color: var(--hm-text-primary);
-  font-family: var(--hm-font-sans);
+  height: 100%;
+  background: var(--oxui-bg-base);
+  color: var(--oxui-text-primary);
+  font-family: var(--oxui-font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-/*
- * Catalog shell: a fixed sidebar (component list) beside a single-component
- * stage, rather than every demo stacked on one long page. Picking a
- * catalog entry decides which demo mounts, so only one is ever in
- * the DOM at a time.
- */
+/* Consumer apps run Tailwind's preflight; mirror its heading/paragraph reset
+   so components render here the way they do in the products. */
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+code,
+pre {
+  font-family: var(--oxui-font-mono);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--oxui-accent);
+  outline-offset: 2px;
+}
+
+input[type='checkbox'],
+input[type='color'] {
+  accent-color: var(--oxui-accent);
+}
+
+/* ---------- Shell: kit's own AppSidebar beside a scrolling main ---------- */
+
 .pg-shell {
   display: flex;
   height: 100vh;
@@ -27,252 +52,612 @@ body {
 }
 
 .pg-sidebar {
-  flex: 0 0 200px;
+  flex-shrink: 0;
   display: flex;
-  flex-direction: column;
-  background: var(--hm-bg-surface);
-  border-right: 0.5px solid var(--hm-border-subtle);
 }
 
-.pg-sidebar__head {
-  padding: 18px 18px 16px;
-  border-bottom: 0.5px solid var(--hm-border-subtle);
-}
-
-.pg-sidebar__title {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.pg-sidebar__subtitle {
-  font-family: var(--hm-font-mono);
-  font-size: 10px;
-  color: var(--hm-text-tertiary);
-  margin-top: 2px;
-}
-
-.pg-sidebar__nav {
+.pg-nav {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
+  padding: 8px 0;
 }
-
-.pg-sidebar__foot {
-  padding: 12px;
-  border-top: 0.5px solid var(--hm-border-subtle);
+.pg-nav .oxui-nav-list {
+  padding: 0;
 }
-
-.pg-theme-toggle {
-  width: 100%;
-  height: 28px;
-  font-size: 11px;
-  font-family: var(--hm-font-sans);
-  background: transparent;
-  border: 0.5px solid var(--hm-border-subtle);
-  border-radius: 5px;
-  color: var(--hm-text-secondary);
-  cursor: pointer;
-}
-.pg-theme-toggle:hover {
-  background: var(--hm-bg-elevated);
-  color: var(--hm-text-primary);
-}
-
-.pg-stage {
-  flex: 1;
-  overflow-y: auto;
-  padding: 24px;
-  display: flex;
-}
-
-.pg-stage > .pg-section {
-  flex: 1;
-}
-
-.pg-section {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  border: 0.5px solid var(--hm-border-subtle);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--hm-bg-surface);
-}
-
-.pg-section__head {
-  padding: 16px 20px 14px;
-}
-
-.pg-section h2 {
-  font-size: 13px;
-  font-weight: 600;
-  margin: 0 0 4px;
-}
-
-.pg-section p.pg-desc {
-  font-size: 12px;
-  color: var(--hm-text-tertiary);
-  margin: 0;
-}
-
-.pg-section__body {
-  display: flex;
-  flex-wrap: wrap;
-  border-top: 0.5px solid var(--hm-border-subtle);
-}
-
-/*
- * Fills whatever vertical space the controls/preview row doesn't use
- * with a live, reactive Vue usage snippet for the demo's current tweak
- * values, rather than leaving the rest of the stage empty.
- */
-.pg-section__snippet {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 120px;
-  padding: 16px 20px;
-  background: var(--hm-mono-bg);
-  border-top: 0.5px solid var(--hm-border-subtle);
-}
-
-.pg-snippet-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.pg-snippet-label {
+.pg-nav__group {
+  padding: 14px 20px 4px;
+  font-family: var(--oxui-font-mono);
   font-size: 10px;
-  font-family: var(--hm-font-mono);
-  color: var(--hm-text-tertiary);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: var(--oxui-text-tertiary);
+}
+/* AppSidebar puts the default slot between header and bottom; let the nav
+   take the slack so the theme switch and footer stay pinned. */
+.pg-sidebar .oxui-sidebar {
+  min-height: 0;
 }
 
-.pg-snippet-code {
+/* AppSidebar's 19px product name suits short names like "Hivemind";
+   "@oxhive/ui" plus the version label wraps at that size in 200px. */
+.pg-sidebar .oxui-sidebar__product-name {
+  font-size: var(--oxui-text-xl);
+  white-space: nowrap;
+}
+.pg-logo {
+  display: block;
+  filter: brightness(0) invert(1);
+}
+:root[data-theme='light'] .pg-logo {
+  filter: none;
+}
+
+.pg-sidebar__theme {
+  padding: 12px 20px;
+  border-top: 0.5px solid var(--oxui-border-subtle);
+}
+.pg-sidebar__theme .oxui-segmented {
+  display: flex;
+}
+.pg-sidebar__theme .oxui-segmented__item {
   flex: 1;
-  margin: 0;
-  overflow: auto;
-  font-family: var(--hm-font-mono);
-  font-size: 12px;
-  line-height: 1.6;
-  color: var(--hm-text-primary);
-  white-space: pre;
+}
+.pg-sidebar__link {
+  font-family: var(--oxui-font-mono);
+  font-size: 10px;
+  color: var(--oxui-text-tertiary);
+  text-decoration: none;
+}
+.pg-sidebar__link:hover {
+  color: var(--oxui-text-primary);
 }
 
-.pg-section__controls {
-  flex: 0 0 240px;
+.pg-topbar,
+.pg-scrim {
+  display: none;
+}
+
+.pg-main {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.pg-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 56px 48px 80px;
+}
+
+/* ---------- Shared bits ---------- */
+
+.pg-label,
+.pg-eyebrow {
+  font-family: var(--oxui-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--oxui-text-tertiary);
+}
+.pg-eyebrow {
+  color: var(--oxui-accent);
+  font-size: 11px;
+}
+
+.pg-codeline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 3px 3px 3px 12px;
+  border-radius: 6px;
+  background: var(--oxui-mono-bg);
+  border: 0.5px solid var(--oxui-mono-border);
+}
+.pg-codeline code {
+  font-size: 12px;
+  color: var(--oxui-text-primary);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.pg-codeblock {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: var(--oxui-mono-bg);
+  border: 0.5px solid var(--oxui-mono-border);
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--oxui-text-secondary);
+  overflow-x: auto;
+}
+
+.pg-hover-target {
+  padding: 6px 12px;
+  border: 0.5px solid var(--oxui-border-default);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--oxui-text-secondary);
+  cursor: default;
+}
+
+.pg-note {
+  font-size: 12px;
+  color: var(--oxui-text-tertiary);
+}
+
+/* ---------- Overview ---------- */
+
+.pg-hero {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 16px 20px;
-  background: var(--hm-bg-base);
-  border-right: 0.5px solid var(--hm-border-subtle);
+  gap: 16px;
+  padding-bottom: 48px;
+  margin-bottom: 8px;
+  border-bottom: 0.5px solid var(--oxui-border-subtle);
 }
-
-.pg-section__preview {
-  flex: 1 1 320px;
+.pg-hero__title {
+  margin: 0;
+  max-width: 14em;
+  font-family: 'Hanken Grotesk', var(--oxui-font-sans);
+  font-weight: 800;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+.pg-hero__lede {
+  margin: 0;
+  max-width: 58ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--oxui-text-secondary);
+}
+.pg-hero__lede code {
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--oxui-text-primary);
+}
+.pg-hero__install {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: var(--hm-bg-elevated);
-}
-
-.pg-section__preview--column {
   flex-direction: column;
   align-items: flex-start;
+  gap: 10px;
+  margin-top: 8px;
+}
+.pg-hero__install .pg-codeblock {
+  width: min(100%, 420px);
+}
+
+.pg-group {
+  padding-top: 40px;
+}
+.pg-group__title {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--oxui-text-secondary);
+}
+
+.pg-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.pg-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 0.5px solid var(--oxui-border-subtle);
+  background: var(--oxui-bg-surface);
+  transition: border-color 0.15s;
+}
+.pg-card:hover {
+  border-color: var(--oxui-border-strong);
+}
+.pg-card__preview {
+  height: 168px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 10px 10px 0 0;
+  background-color: var(--oxui-bg-base);
+  background-image: radial-gradient(var(--oxui-border-subtle) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.pg-card__preview .oxui-empty-state {
+  height: auto;
+  gap: 2px;
+}
+.pg-card__frame {
+  border: 0.5px solid var(--oxui-border-subtle);
+  border-radius: 6px;
+  background: var(--oxui-bg-surface);
+  overflow: hidden;
+}
+.pg-card__frame .oxui-nav-list {
+  padding: 6px 0;
+}
+
+.pg-card__mini-sidebar {
+  width: 112px;
+  height: 136px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 8px;
+  border-radius: 6px;
+  border: 0.5px solid var(--oxui-border-subtle);
+  background: var(--oxui-bg-surface);
+}
+.pg-card__mini-head {
+  padding: 0 4px 8px;
+  margin-bottom: 2px;
+  border-bottom: 0.5px solid var(--oxui-border-subtle);
+  font-size: 11px;
+  font-weight: 600;
+}
+.pg-card__mini-head span {
+  font-family: var(--oxui-font-mono);
+  font-size: 8px;
+  font-weight: 400;
+  color: var(--oxui-text-tertiary);
+}
+.pg-card__mini-row {
+  height: 14px;
+  border-radius: 4px;
+  background: var(--oxui-bg-elevated);
+  opacity: 0.6;
+}
+.pg-card__mini-row--active {
+  opacity: 1;
+  box-shadow: inset 2px 0 0 var(--oxui-accent);
+}
+.pg-card__mini-foot {
+  margin-top: auto;
+  text-align: center;
+  font-family: 'Hanken Grotesk', var(--oxui-font-sans);
+  font-weight: 800;
+  font-size: 10px;
+}
+
+.pg-card__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px 16px;
+  border-top: 0.5px solid var(--oxui-border-subtle);
+  border-radius: 0 0 10px 10px;
+  text-decoration: none;
+}
+.pg-card__foot:hover .pg-card__name {
+  color: var(--oxui-accent);
+}
+.pg-card__foot:focus-visible {
+  outline-offset: -2px;
+}
+.pg-card__name {
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+.pg-card__name::after {
+  content: ' →';
+  color: var(--oxui-text-tertiary);
+}
+.pg-card__summary {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--oxui-text-tertiary);
+}
+
+/* ---------- Component page ---------- */
+
+.pg-page__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.pg-page__title {
+  margin: 0;
+  font-family: 'Hanken Grotesk', var(--oxui-font-sans);
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.pg-page__desc {
+  margin: 0 0 4px;
+  max-width: 62ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--oxui-text-secondary);
+}
+
+.pg-demo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 248px;
+  border-radius: 10px;
+  border: 0.5px solid var(--oxui-border-subtle);
+  background: var(--oxui-bg-surface);
+  overflow: hidden;
+}
+.pg-demo--no-controls {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pg-demo__preview {
+  min-height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px 24px;
+  background-color: var(--oxui-bg-base);
+  background-image: radial-gradient(var(--oxui-border-subtle) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.pg-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.pg-demo__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px 18px 22px;
+  border-left: 0.5px solid var(--oxui-border-subtle);
 }
 
 .pg-control {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  font-size: 11px;
-  color: var(--hm-text-secondary);
-}
-
-.pg-control select,
-.pg-control input[type='text'] {
-  height: 28px;
-  padding: 0 8px;
+  gap: 6px;
   font-size: 12px;
-  font-family: var(--hm-font-sans);
-  background: var(--hm-bg-elevated);
-  border: 0.5px solid var(--hm-border-subtle);
-  border-radius: 4px;
-  color: var(--hm-text-primary);
+  color: var(--oxui-text-secondary);
 }
-
+.pg-control__label {
+  font-family: var(--oxui-font-mono);
+  font-size: 11px;
+  color: var(--oxui-text-secondary);
+}
+.pg-control .oxui-segmented {
+  flex-wrap: wrap;
+  align-self: flex-start;
+}
 .pg-control.pg-check {
   flex-direction: row;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  font-family: var(--oxui-font-mono);
+  font-size: 11px;
+  cursor: pointer;
 }
-
-.pg-swatch {
-  position: relative;
-  padding: 32px;
-  border: 0.5px dashed var(--hm-border-default);
-  border-radius: 6px;
-  min-height: 60px;
+.pg-check input {
+  margin: 0;
+}
+.pg-color {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+}
+.pg-color input[type='color'] {
+  width: 32px;
+  height: 28px;
+  padding: 0;
+  border: 0.5px solid var(--oxui-border-subtle);
+  border-radius: 5px;
+  background: none;
+  cursor: pointer;
 }
 
-/*
- * Below this width the sidebar+stage columns and the controls/preview
- * split inside each section no longer have room to sit side by side
- * without squeezing text into unreadable slivers, so stack everything
- * instead.
- */
-@media (max-width: 720px) {
+.pg-demo__code {
+  grid-column: 1 / -1;
+  border-top: 0.5px solid var(--oxui-border-subtle);
+  background: var(--oxui-mono-bg);
+}
+.pg-demo__code-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px 0 18px;
+}
+.pg-demo__code-body {
+  margin: 0;
+  padding: 8px 18px 18px;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--oxui-text-primary);
+}
+
+.pg-api {
+  margin-top: 40px;
+}
+.pg-api__title {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--oxui-text-secondary);
+}
+.pg-api__scroll {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 0.5px solid var(--oxui-border-subtle);
+}
+.pg-api__table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.pg-api__table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-family: var(--oxui-font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--oxui-text-tertiary);
+  background: var(--oxui-bg-surface);
+  border-bottom: 0.5px solid var(--oxui-border-subtle);
+}
+.pg-api__table td {
+  padding: 10px 14px;
+  vertical-align: top;
+  color: var(--oxui-text-secondary);
+  border-bottom: 0.5px solid var(--oxui-border-subtle);
+}
+.pg-api__table tr:last-child td {
+  border-bottom: none;
+}
+.pg-api__table code {
+  font-size: 11px;
+  color: var(--oxui-text-secondary);
+  white-space: nowrap;
+}
+.pg-api__table .pg-api__name {
+  color: var(--oxui-text-primary);
+}
+.pg-api__none {
+  color: var(--oxui-text-disabled);
+}
+
+.pg-pager {
+  display: flex;
+  gap: 16px;
+  margin-top: 56px;
+}
+.pg-pager__link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 50%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 0.5px solid var(--oxui-border-subtle);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.pg-pager__link:hover {
+  border-color: var(--oxui-border-strong);
+}
+.pg-pager__link--next {
+  margin-left: auto;
+  text-align: right;
+}
+.pg-pager__dir {
+  font-family: var(--oxui-font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--oxui-text-tertiary);
+}
+
+/* ---------- Narrow screens: sidebar becomes a drawer ---------- */
+
+@media (max-width: 800px) {
   .pg-shell {
     flex-direction: column;
   }
 
+  .pg-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: 52px;
+    flex-shrink: 0;
+    padding: 0 16px;
+    background: var(--oxui-bg-surface);
+    border-bottom: 0.5px solid var(--oxui-border-subtle);
+  }
+  .pg-topbar__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    padding: 0 10px 0 6px;
+    margin-left: -6px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--oxui-text-primary);
+    font-family: var(--oxui-font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .pg-topbar__toggle:hover {
+    background: var(--oxui-bg-elevated);
+  }
+  .pg-topbar__brand {
+    font-family: var(--oxui-font-mono);
+    font-size: 11px;
+    color: var(--oxui-text-tertiary);
+  }
+
   .pg-sidebar {
-    flex: 0 0 auto;
-    max-height: 38vh;
-    border-right: none;
-    border-bottom: 0.5px solid var(--hm-border-subtle);
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 30;
+    width: min(260px, 85vw);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease-out;
   }
-
-  .pg-stage {
-    padding: 16px;
-  }
-
-  .pg-section__head {
-    padding: 14px 16px 12px;
-  }
-
-  .pg-section__body {
-    flex-direction: column;
-  }
-
-  .pg-section__controls {
-    flex: 0 0 auto;
-    width: 100%;
-    border-right: none;
-    border-bottom: 0.5px solid var(--hm-border-subtle);
-  }
-
-  .pg-control select,
-  .pg-control input[type='text'] {
+  .pg-sidebar .oxui-sidebar {
     width: 100%;
   }
-
-  .pg-section__preview {
-    flex: 1 1 auto;
-    padding: 16px;
+  .pg-shell--nav-open .pg-sidebar {
+    transform: none;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+  }
+  .pg-shell--nav-open .pg-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 29;
+    background: rgba(0, 0, 0, 0.45);
   }
 
-  .pg-section__snippet {
-    padding: 14px 16px;
+  .pg-content {
+    padding: 32px 16px 56px;
+  }
+
+  .pg-demo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pg-demo__preview {
+    min-height: 220px;
+    padding: 28px 16px;
+  }
+  .pg-demo__controls {
+    border-left: none;
+    border-top: 0.5px solid var(--oxui-border-subtle);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-sidebar,
+  .pg-card,
+  .pg-pager__link {
+    transition: none;
   }
 }

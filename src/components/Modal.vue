@@ -67,7 +67,7 @@ onBeforeUnmount(() => {
 <template>
   <div
     class="oxui-modal-overlay"
-    style="background: rgba(0, 0, 0, 0.6)"
+    style="background: var(--oxui-scrim)"
     @click.self="$emit('cancel')"
   >
     <div
@@ -76,13 +76,13 @@ onBeforeUnmount(() => {
       aria-modal="true"
       :aria-labelledby="titleId"
       class="oxui-modal"
-      style="background: var(--hm-bg-overlay); border: 0.5px solid var(--hm-border-default)"
+      style="background: var(--oxui-bg-overlay); border: 0.5px solid var(--oxui-border-default)"
       v-bind="$attrs"
     >
-      <h3 :id="titleId" class="oxui-modal__title" style="color: var(--hm-text-primary)">
+      <h3 :id="titleId" class="oxui-modal__title" style="color: var(--oxui-text-primary)">
         {{ title }}
       </h3>
-      <div class="oxui-modal__body" style="color: var(--hm-text-secondary)">
+      <div class="oxui-modal__body" style="color: var(--oxui-text-secondary)">
         <slot>{{ body }}</slot>
       </div>
       <div class="oxui-modal__actions">
@@ -122,7 +122,7 @@ onBeforeUnmount(() => {
   margin-bottom: 12px;
 }
 .oxui-modal__body {
-  font-size: 14px;
+  font-size: var(--oxui-text-lg);
   margin-bottom: 20px;
 }
 .oxui-modal__actions {

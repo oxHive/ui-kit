@@ -1,0 +1,9 @@
+{
+  "name": "@oxhive/ui",
+  "version": "0.2.0",
+  "private": true,
+  "description": "React adapter over the compiled Vue dist, for /design-sync only. Not published.",
+  "type": "module",
+  "module": "./index.js",
+  "types": "./index.d.ts"
+}

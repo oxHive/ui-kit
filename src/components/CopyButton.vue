@@ -8,7 +8,8 @@ import Button from './Button.vue'
 // variant / size: passed to Button.
 // Emits `copied` (with the text) or `error`. Default slot receives
 // `{ copied }` for icon-only buttons; native attrs (title, aria-label)
-// fall through to the <button>.
+// fall through to the <button>. While copied, default and ghost buttons
+// turn --oxui-success-text (slotted icons follow via currentColor).
 const props = defineProps({
   text: { type: [String, Function], required: true },
   label: { type: String, default: 'Copy' },
@@ -60,7 +61,23 @@ onBeforeUnmount(() => clearTimeout(timer))
 </script>
 
 <template>
-  <Button type="button" :variant="variant" :size="size" @click="copy">
+  <Button
+    type="button"
+    :variant="variant"
+    :size="size"
+    :class="{ 'oxui-copy--copied': copied }"
+    @click="copy"
+  >
     <slot :copied="copied">{{ copied ? copiedLabel : label }}</slot>
   </Button>
 </template>
+
+<style>
+/* Plain CSS on purpose — see AppSidebar.vue. Only the transparent variants
+   tint: teal text on the primary or danger fills drops below 4.5:1. Two
+   classes so this wins over Button's single-class variant rules. */
+.oxui-btn-default.oxui-copy--copied,
+.oxui-btn-ghost.oxui-copy--copied {
+  color: var(--oxui-success-text);
+}
+</style>
