@@ -10,7 +10,7 @@ function block(selector) {
   const start = css.indexOf(`${selector} {`)
   const body = css.slice(start, css.indexOf('}', start))
   return Object.fromEntries(
-    [...body.matchAll(/--hm-([\w-]+):\s*(#[0-9a-f]{6});/gi)].map((m) => m.slice(1)),
+    [...body.matchAll(/--oxui-([\w-]+):\s*(#[0-9a-f]{6});/gi)].map((m) => m.slice(1)),
   )
 }
 

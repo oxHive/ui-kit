@@ -55,7 +55,7 @@ const navItems = [
     <h1 class="pg-hero__title">Thirteen components, one warm hive.</h1>
     <p class="pg-hero__lede">
       Vue 3 components in plain, <code>oxui-</code>-prefixed CSS, themed entirely through
-      <code>--hm-*</code> tokens. Switch the theme in the sidebar; everything here follows.
+      <code>--oxui-*</code> tokens. Switch the theme in the sidebar; everything here follows.
     </p>
     <div class="pg-hero__install">
       <div class="pg-codeline">
@@ -100,9 +100,9 @@ const navItems = [
             aria-label="Layer"
           />
           <template v-else-if="c.key === 'Badge'">
-            <Badge label="personal" color="var(--hm-personal)" />
-            <Badge label="workspace" color="var(--hm-workspace)" />
-            <Badge label="org" color="var(--hm-org)" />
+            <Badge label="personal" color="var(--oxui-personal)" />
+            <Badge label="workspace" color="var(--oxui-workspace)" />
+            <Badge label="org" color="var(--oxui-org)" />
           </template>
           <EmptyState
             v-else-if="c.key === 'EmptyState'"

@@ -7,14 +7,14 @@ export const CommandLine = () => {
     alignItems: 'center',
     padding: '0 10px',
     borderRadius: 5,
-    background: 'var(--hm-mono-bg)',
-    border: '0.5px solid var(--hm-mono-border)',
-    fontFamily: 'var(--hm-font-mono)',
+    background: 'var(--oxui-mono-bg)',
+    border: '0.5px solid var(--oxui-mono-border)',
+    fontFamily: 'var(--oxui-font-mono)',
     fontSize: 11,
-    color: 'var(--hm-text-primary)',
+    color: 'var(--oxui-text-primary)',
   }
   return (
-    <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+    <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <code style={code}>mynd status</code>
         <CopyButton text="mynd status" />
@@ -24,7 +24,7 @@ export const CommandLine = () => {
 }
 
 export const Variants = () => (
-  <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+  <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
     <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
       <CopyButton text="mem_a1b2c3" label="Copy ID" />
       <CopyButton text="mem_a1b2c3" label="Copy ID" variant="ghost" />
@@ -39,15 +39,15 @@ export const Variants = () => (
 )
 
 export const IconOnly = () => (
-  <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+  <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
     <div
       style={{
         display: 'flex',
         gap: 10,
         alignItems: 'center',
-        fontFamily: 'var(--hm-font-mono)',
+        fontFamily: 'var(--oxui-font-mono)',
         fontSize: 11,
-        color: 'var(--hm-text-secondary)',
+        color: 'var(--oxui-text-secondary)',
       }}
     >
       mem_a1b2c3

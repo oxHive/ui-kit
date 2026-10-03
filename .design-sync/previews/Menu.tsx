@@ -17,7 +17,7 @@ export const FlagMenu = () => {
     </svg>
   )
   return (
-    <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+    <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
       <Menu
         items={['incorrect', 'outdated', 'duplicate', 'other']}
         aria-label="Flag for review"
@@ -33,7 +33,7 @@ export const FlagMenu = () => {
 }
 
 export const DefaultTrigger = () => (
-  <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+  <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
     <Menu
       items={['Rename', 'Duplicate', 'Archive']}
       variant="default"

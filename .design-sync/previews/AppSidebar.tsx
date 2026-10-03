@@ -23,19 +23,19 @@ export const AppShell = () => {
       <polygon
         points="8,1.5 13.6,4.75 13.6,11.25 8,14.5 2.4,11.25 2.4,4.75"
         fill="none"
-        stroke="var(--hm-accent)"
+        stroke="var(--oxui-accent)"
         strokeWidth="1.2"
       />
-      <circle cx="8" cy="8" r="2" fill="var(--hm-accent)" />
+      <circle cx="8" cy="8" r="2" fill="var(--oxui-accent)" />
     </svg>
   )
   return (
-    <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+    <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
       <div
         style={{
           display: 'flex',
           height: 440,
-          border: '0.5px solid var(--hm-border-subtle)',
+          border: '0.5px solid var(--oxui-border-subtle)',
           borderRadius: 8,
           overflow: 'hidden',
         }}
@@ -46,11 +46,11 @@ export const AppShell = () => {
           logoIcon={<ProductMark />}
           status={
             <div style={{ padding: '0 20px 12px' }}>
-              <Badge label="synced" color="var(--hm-success-text)" />
+              <Badge label="synced" color="var(--oxui-success-text)" />
             </div>
           }
           footer={
-            <div style={{ fontSize: 11, color: 'var(--hm-text-tertiary)' }}>1,234 memories</div>
+            <div style={{ fontSize: 11, color: 'var(--oxui-text-tertiary)' }}>1,234 memories</div>
           }
         >
           <AppNav
@@ -69,7 +69,7 @@ export const AppShell = () => {
             display: 'flex',
             flexDirection: 'column',
             gap: 16,
-            background: 'var(--hm-bg-base)',
+            background: 'var(--oxui-bg-base)',
           }}
         >
           <h1 style={{ fontSize: 15, fontWeight: 600 }}>Memories</h1>

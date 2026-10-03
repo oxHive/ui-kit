@@ -56,9 +56,9 @@ defineProps({
   align-items: center;
   justify-content: space-between;
   padding: 9px 12px;
-  font-size: var(--hm-text-md);
+  font-size: var(--oxui-text-md);
   text-align: left;
-  color: var(--hm-text-secondary);
+  color: var(--oxui-text-secondary);
   background: transparent;
   border: none;
   border-radius: 8px;
@@ -74,30 +74,30 @@ defineProps({
 }
 .oxui-nav-item__icon {
   flex-shrink: 0;
-  color: var(--hm-text-tertiary);
+  color: var(--oxui-text-tertiary);
   transition: color 0.1s;
 }
 .oxui-nav-item:hover,
 .oxui-nav-item:focus-visible {
-  background: var(--hm-bg-elevated);
-  color: var(--hm-text-primary);
+  background: var(--oxui-bg-elevated);
+  color: var(--oxui-text-primary);
   outline: none;
 }
 .oxui-nav-item:hover .oxui-nav-item__icon,
 .oxui-nav-item:focus-visible .oxui-nav-item__icon {
-  color: var(--hm-text-primary);
+  color: var(--oxui-text-primary);
 }
 .oxui-nav-item:focus-visible {
-  outline: 2px solid var(--hm-accent);
+  outline: 2px solid var(--oxui-accent);
   outline-offset: -2px;
 }
 .oxui-nav-item--active {
-  background: var(--hm-bg-elevated);
-  color: var(--hm-text-primary);
+  background: var(--oxui-bg-elevated);
+  color: var(--oxui-text-primary);
   font-weight: 500;
 }
 .oxui-nav-item--active .oxui-nav-item__icon {
-  color: var(--hm-text-primary);
+  color: var(--oxui-text-primary);
 }
 .oxui-nav-item__badge {
   display: inline-flex;
@@ -107,10 +107,10 @@ defineProps({
   height: 18px;
   padding: 0 5px;
   border-radius: 999px;
-  font-size: var(--hm-text-xs);
+  font-size: var(--oxui-text-xs);
   line-height: 1;
-  font-family: var(--hm-font-mono);
-  background: var(--hm-warning-bg);
-  color: var(--hm-warning);
+  font-family: var(--oxui-font-mono);
+  background: var(--oxui-warning-bg);
+  color: var(--oxui-warning);
 }
 </style>

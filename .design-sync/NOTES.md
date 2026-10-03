@@ -30,7 +30,7 @@
 ## Preview authoring
 
 - Card cells are white; the kit's tokens default to dark. Every story wraps its
-  content in an inline `background: var(--hm-bg-base)` div.
+  content in an inline `background: var(--oxui-bg-base)` div.
 - `.prompt.md` examples show only the story body: keep every helper (icons,
   style objects) INSIDE the export, and keep the code plain JSX (no `as const`,
   no type annotations) — a module-level helper leaks into examples as an
@@ -50,8 +50,8 @@
 ## Kit gaps found during sync
 
 - `Input` has no `:disabled` style.
-- `Badge color="var(--hm-warning)"` text is low-contrast on dark; there is no
-  `--hm-warning-text` token yet.
+- `Badge color="var(--oxui-warning)"` text is low-contrast on dark; there is no
+  `--oxui-warning-text` token yet.
 
 ## Re-sync risks
 

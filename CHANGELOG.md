@@ -7,30 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Breaking
+
+- All CSS custom properties are renamed from `--hm-*` to `--oxui-*`, matching
+  the components' `oxui-` class prefix (e.g. `--hm-bg-base` →
+  `--oxui-bg-base`). Update any `var(--hm-…)` references in consuming apps.
+- The Tailwind preset's color names are renamed to match: `hm-personal`,
+  `hm-workspace`, `hm-org`, `hm-warning`, `hm-danger` and `hm-accent` become
+  `oxui-*`, so classes like `bg-hm-personal` become `bg-oxui-personal`.
+
 ### Added
 
-- `--hm-danger-text` token: the danger hue as readable text on
-  `--hm-danger-bg` (`#f09595` dark, `#a32d2d` light).
-- `--hm-success-text` token: teal that stays readable as text (`#1d9e75`
+- `--oxui-danger-text` token: the danger hue as readable text on
+  `--oxui-danger-bg` (`#f09595` dark, `#a32d2d` light).
+- `--oxui-success-text` token: teal that stays readable as text (`#1d9e75`
   dark, `#0f6e56` light).
-- `--hm-scrim` token for the `Modal` backdrop (`#00000099` dark, a lighter
+- `--oxui-scrim` token for the `Modal` backdrop (`#00000099` dark, a lighter
   warm `#211d1759` in light).
-- `CopyButton` turns `--hm-success-text` while showing its copied state, on
+- `CopyButton` turns `--oxui-success-text` while showing its copied state, on
   the `default` and `ghost` variants (slotted icons follow via
   `currentColor`).
 
 ### Changed
 
-- `--hm-text-tertiary` now meets WCAG AA (4.5:1) on base, surface and
+- `--oxui-text-tertiary` now meets WCAG AA (4.5:1) on base, surface and
   elevated backgrounds in both themes: `#67625a` → `#8c867c` (dark),
-  `#948c7a` → `#6f6858` (light). Light `--hm-text-secondary` darkens
+  `#948c7a` → `#6f6858` (light). Light `--oxui-text-secondary` darkens
   `#6e6759` → `#5c5649` so it stays a step above tertiary.
 - `Badge`, `Toast`, `AppNav`'s count badge and `AppSidebar`'s version label
-  use `var(--hm-font-mono)` (IBM Plex Mono) instead of a hardcoded system
+  use `var(--oxui-font-mono)` (IBM Plex Mono) instead of a hardcoded system
   monospace stack.
-- Components size text with the `--hm-text-*` scale tokens instead of
+- Components size text with the `--oxui-text-*` scale tokens instead of
   hardcoded pixels; rendered sizes are unchanged.
-- `Modal` backdrop uses `--hm-scrim`, so it is lighter in the light theme.
+- `Modal` backdrop uses `--oxui-scrim`, so it is lighter in the light theme.
 
 ### Fixed
 

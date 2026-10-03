@@ -16,10 +16,10 @@ const SNIPPET = `<template v-if="loading">
       <div
         style="
           width: min(100%, 320px);
-          border: 0.5px solid var(--hm-border-subtle);
+          border: 0.5px solid var(--oxui-border-subtle);
           border-radius: 8px;
           overflow: hidden;
-          background: var(--hm-bg-surface);
+          background: var(--oxui-bg-surface);
         "
         aria-busy="true"
         aria-label="Loading"

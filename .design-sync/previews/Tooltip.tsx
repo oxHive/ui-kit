@@ -20,7 +20,7 @@ export const AboveTarget = () => {
         justifyContent: 'center',
         paddingBottom: 32,
         borderRadius: 8,
-        background: 'var(--hm-bg-base)',
+        background: 'var(--oxui-bg-base)',
       }}
     >
       <span
@@ -28,10 +28,10 @@ export const AboveTarget = () => {
         tabIndex={0}
         style={{
           padding: '6px 12px',
-          border: '0.5px solid var(--hm-border-default)',
+          border: '0.5px solid var(--oxui-border-default)',
           borderRadius: 4,
           fontSize: 12,
-          color: 'var(--hm-text-secondary)',
+          color: 'var(--oxui-text-secondary)',
         }}
       >
         Shared

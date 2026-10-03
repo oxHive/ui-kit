@@ -9,7 +9,7 @@ import Button from './Button.vue'
 // Emits `copied` (with the text) or `error`. Default slot receives
 // `{ copied }` for icon-only buttons; native attrs (title, aria-label)
 // fall through to the <button>. While copied, default and ghost buttons
-// turn --hm-success-text (slotted icons follow via currentColor).
+// turn --oxui-success-text (slotted icons follow via currentColor).
 const props = defineProps({
   text: { type: [String, Function], required: true },
   label: { type: String, default: 'Copy' },
@@ -78,6 +78,6 @@ onBeforeUnmount(() => clearTimeout(timer))
    classes so this wins over Button's single-class variant rules. */
 .oxui-btn-default.oxui-copy--copied,
 .oxui-btn-ghost.oxui-copy--copied {
-  color: var(--hm-success-text);
+  color: var(--oxui-success-text);
 }
 </style>

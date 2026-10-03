@@ -22,12 +22,12 @@ export const Navigation = () => {
   const Flag = icon('M3 14V2.5h8.5l-1.5 3 1.5 3H3')
   const Gear = icon('M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2')
   return (
-    <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+    <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
       <div
         style={{
           width: 220,
-          background: 'var(--hm-bg-surface)',
-          border: '0.5px solid var(--hm-border-subtle)',
+          background: 'var(--oxui-bg-surface)',
+          border: '0.5px solid var(--oxui-border-subtle)',
           borderRadius: 8,
         }}
       >

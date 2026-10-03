@@ -118,7 +118,7 @@ const API = [
       <Modal
         v-if="slotsOpen"
         title="Confirm deletion"
-        style="border-color: var(--hm-danger-border)"
+        style="border-color: var(--oxui-danger-border)"
         @cancel="close('cancel')"
       >
         <p style="margin: 0 0 12px">Type DELETE to permanently delete everything.</p>

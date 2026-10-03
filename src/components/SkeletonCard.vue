@@ -1,5 +1,5 @@
 <template>
-  <div class="oxui-skeleton-card" style="border-bottom: 0.5px solid var(--hm-border-subtle)">
+  <div class="oxui-skeleton-card" style="border-bottom: 0.5px solid var(--oxui-border-subtle)">
     <div class="oxui-skeleton oxui-skeleton--title"></div>
     <div class="oxui-skeleton oxui-skeleton--body"></div>
     <div class="oxui-skeleton oxui-skeleton--meta"></div>
@@ -26,9 +26,9 @@
 .oxui-skeleton {
   background: linear-gradient(
     90deg,
-    var(--hm-bg-elevated) 25%,
-    var(--hm-bg-overlay) 50%,
-    var(--hm-bg-elevated) 75%
+    var(--oxui-bg-elevated) 25%,
+    var(--oxui-bg-overlay) 50%,
+    var(--oxui-bg-elevated) 75%
   );
   background-size: 800px 100%;
   animation: oxui-shimmer 1.5s infinite;

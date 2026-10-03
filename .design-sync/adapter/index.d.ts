@@ -97,9 +97,9 @@ export declare function SegmentedControl(props: SegmentedControlProps): JSX.Elem
 export interface BadgeProps extends Common {
   label?: string
   /**
-   * Any CSS color: hex, rgb()/hsl(), `var(--hm-*)` or a named color. Tints
+   * Any CSS color: hex, rgb()/hsl(), `var(--oxui-*)` or a named color. Tints
    * the background at 18% and colors the text. Omit for neutral. Scope hues
-   * carry meaning: `var(--hm-personal)`, `var(--hm-workspace)`, `var(--hm-org)`.
+   * carry meaning: `var(--oxui-personal)`, `var(--oxui-workspace)`, `var(--oxui-org)`.
    */
   color?: string
 }

@@ -3,7 +3,7 @@ import { Button } from '@oxhive/ui'
 export const Variants = () => {
   const row = { display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }
   return (
-    <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+    <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
       <div style={row}>
         <Button variant="primary">Save changes</Button>
         <Button>Cancel</Button>
@@ -17,7 +17,7 @@ export const Variants = () => {
 export const Small = () => {
   const row = { display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }
   return (
-    <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+    <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
       <div style={row}>
         <Button variant="primary" size="sm">
           save
@@ -37,7 +37,7 @@ export const Small = () => {
 export const WithIcon = () => {
   const row = { display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }
   return (
-    <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+    <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
       <div style={row}>
         <Button variant="primary">
           <svg
@@ -78,7 +78,7 @@ export const WithIcon = () => {
 export const Disabled = () => {
   const row = { display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }
   return (
-    <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+    <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
       <div style={row}>
         <Button variant="primary" disabled>
           Save changes

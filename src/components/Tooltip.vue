@@ -56,10 +56,10 @@ const style = computed(() => {
   max-width: 320px;
   padding: 6px 9px;
   border-radius: 6px;
-  border: 0.5px solid var(--hm-border-default);
-  background: var(--hm-bg-overlay);
-  color: var(--hm-text-primary);
-  font-size: var(--hm-text-sm);
+  border: 0.5px solid var(--oxui-border-default);
+  background: var(--oxui-bg-overlay);
+  color: var(--oxui-text-primary);
+  font-size: var(--oxui-text-sm);
   line-height: 1.4;
   white-space: normal;
   word-break: break-word;

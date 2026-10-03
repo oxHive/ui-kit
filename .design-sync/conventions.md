@@ -2,19 +2,19 @@
 
 **What these components are.** The real compiled @oxhive/ui (Vue 3) components, each wrapped for React. Use them like any React component: props in, `children` and named slot props for content, `onXxx` for events. They need no provider or wrapper.
 
-**Setup.** Link `styles.css` once. It brings the `--hm-*` tokens, the IBM Plex fonts and the component CSS, and it paints `html`/`body` with `--hm-bg-base` and `--hm-text-primary`. The theme is **dark by default**; set `document.documentElement.dataset.theme = 'light'` (`<html data-theme="light">`) for light. The theme is page-wide only: there is no per-subtree theming.
+**Setup.** Link `styles.css` once. It brings the `--oxui-*` tokens, the IBM Plex fonts and the component CSS, and it paints `html`/`body` with `--oxui-bg-base` and `--oxui-text-primary`. The theme is **dark by default**; set `document.documentElement.dataset.theme = 'light'` (`<html data-theme="light">`) for light. The theme is page-wide only: there is no per-subtree theming.
 
 **Styling idiom: CSS custom properties.** There are no utility classes. Components style themselves; for your own layout glue use inline styles (or your own CSS) that read the tokens. Never hard-code colors the tokens cover.
 
-| Purpose                                      | Tokens                                                                                               |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Surfaces, back to front                      | `--hm-bg-base`, `--hm-bg-surface`, `--hm-bg-elevated`, `--hm-bg-overlay`                             |
-| Hairline borders (use `0.5px solid`)         | `--hm-border-subtle`, `--hm-border-default`, `--hm-border-strong`                                    |
-| Text                                         | `--hm-text-primary`, `--hm-text-secondary`, `--hm-text-tertiary`, `--hm-text-disabled`               |
-| Scope hues (each means one thing)            | `--hm-personal` (this device), `--hm-workspace` (shared with a workspace), `--hm-org` (organisation) |
-| Status                                       | `--hm-success-text`, `--hm-warning`, `--hm-danger-text`, `--hm-danger-bg`, `--hm-danger-border`      |
-| Accent (focus rings and active markers only) | `--hm-accent`                                                                                        |
-| Type                                         | `--hm-font-sans`, `--hm-font-mono`; sizes `--hm-text-xs` (10px) to `--hm-text-xl` (15px)             |
+| Purpose                                      | Tokens                                                                                                     |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Surfaces, back to front                      | `--oxui-bg-base`, `--oxui-bg-surface`, `--oxui-bg-elevated`, `--oxui-bg-overlay`                           |
+| Hairline borders (use `0.5px solid`)         | `--oxui-border-subtle`, `--oxui-border-default`, `--oxui-border-strong`                                    |
+| Text                                         | `--oxui-text-primary`, `--oxui-text-secondary`, `--oxui-text-tertiary`, `--oxui-text-disabled`             |
+| Scope hues (each means one thing)            | `--oxui-personal` (this device), `--oxui-workspace` (shared with a workspace), `--oxui-org` (organisation) |
+| Status                                       | `--oxui-success-text`, `--oxui-warning`, `--oxui-danger-text`, `--oxui-danger-bg`, `--oxui-danger-border`  |
+| Accent (focus rings and active markers only) | `--oxui-accent`                                                                                            |
+| Type                                         | `--oxui-font-sans`, `--oxui-font-mono`; sizes `--oxui-text-xs` (10px) to `--oxui-text-xl` (15px)           |
 
 The UI is compact: body text is 12–13px, and mono is for IDs, versions, counts and commands. Radii are 4–8px.
 
@@ -41,11 +41,11 @@ const ListIcon = () => (
   </AppSidebar>
   <main style={{ flex: 1, padding: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <h1 style={{ fontSize: 'var(--hm-text-xl)', fontWeight: 600 }}>Memories</h1>
+      <h1 style={{ fontSize: 'var(--oxui-text-xl)', fontWeight: 600 }}>Memories</h1>
       <Button variant="primary">New memory</Button>
     </div>
-    <div style={{ background: 'var(--hm-bg-surface)', border: '0.5px solid var(--hm-border-subtle)', borderRadius: 8, padding: 16 }}>
-      <Badge label="personal" color="var(--hm-personal)" />
+    <div style={{ background: 'var(--oxui-bg-surface)', border: '0.5px solid var(--oxui-border-subtle)', borderRadius: 8, padding: 16 }}>
+      <Badge label="personal" color="var(--oxui-personal)" />
     </div>
   </main>
 </div>

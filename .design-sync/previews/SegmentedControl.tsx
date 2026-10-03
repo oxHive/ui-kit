@@ -7,14 +7,14 @@ export const LayerFilter = () => {
     { label: 'Workspace', value: 'workspace', description: 'Memories shared with this workspace' },
   ]
   return (
-    <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+    <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
       <SegmentedControl value="personal" options={LAYERS} aria-label="Filter by layer" />
     </div>
   )
 }
 
 export const ViewSwitch = () => (
-  <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+  <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
     <SegmentedControl
       value="list"
       options={[
@@ -27,7 +27,7 @@ export const ViewSwitch = () => (
 )
 
 export const Locked = () => (
-  <div style={{ background: 'var(--hm-bg-base)', padding: 16, borderRadius: 8 }}>
+  <div style={{ background: 'var(--oxui-bg-base)', padding: 16, borderRadius: 8 }}>
     <SegmentedControl
       value="daily"
       disabled

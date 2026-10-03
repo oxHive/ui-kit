@@ -10,9 +10,9 @@
 html,
 body {
   margin: 0;
-  background: var(--hm-bg-base);
-  color: var(--hm-text-primary);
-  font-family: var(--hm-font-sans);
+  background: var(--oxui-bg-base);
+  color: var(--oxui-text-primary);
+  font-family: var(--oxui-font-sans);
   -webkit-font-smoothing: antialiased;
 }
 h1,

@@ -12,7 +12,7 @@ export const Dangerous = () => {
         transform: 'translateZ(0)',
         overflow: 'hidden',
         borderRadius: 8,
-        background: 'var(--hm-bg-base)',
+        background: 'var(--oxui-bg-base)',
       }}
     >
       {children}
@@ -42,7 +42,7 @@ export const Confirm = () => {
         transform: 'translateZ(0)',
         overflow: 'hidden',
         borderRadius: 8,
-        background: 'var(--hm-bg-base)',
+        background: 'var(--oxui-bg-base)',
       }}
     >
       {children}
@@ -71,7 +71,7 @@ export const TypeToConfirm = () => {
         transform: 'translateZ(0)',
         overflow: 'hidden',
         borderRadius: 8,
-        background: 'var(--hm-bg-base)',
+        background: 'var(--oxui-bg-base)',
       }}
     >
       {children}
@@ -81,7 +81,7 @@ export const TypeToConfirm = () => {
     <Page>
       <Modal
         title="Confirm deletion"
-        style={{ borderColor: 'var(--hm-danger-border)' }}
+        style={{ borderColor: 'var(--oxui-danger-border)' }}
         actions={
           <>
             <Button>Cancel</Button>

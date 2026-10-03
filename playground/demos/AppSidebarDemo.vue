@@ -27,10 +27,10 @@ const ProductIcon = {
       h('polygon', {
         points: '8,1.5 13.6,4.75 13.6,11.25 8,14.5 2.4,11.25 2.4,4.75',
         fill: 'none',
-        stroke: 'var(--hm-accent)',
+        stroke: 'var(--oxui-accent)',
         'stroke-width': 1.2,
       }),
-      h('circle', { cx: 8, cy: 8, r: 2, fill: 'var(--hm-accent)' }),
+      h('circle', { cx: 8, cy: 8, r: 2, fill: 'var(--oxui-accent)' }),
     ]),
 }
 
@@ -60,7 +60,7 @@ const snippet = computed(
   <AppNav :items="items" />
 
   <template #status>
-    <Badge label="synced" color="var(--hm-personal)" />
+    <Badge label="synced" color="var(--oxui-personal)" />
   </template>
   <template #footer>1,234 memories</template>
 </AppSidebar>`,
@@ -103,7 +103,7 @@ const API = [
           width: 100%;
           max-width: 520px;
           display: flex;
-          border: 0.5px solid var(--hm-border-subtle);
+          border: 0.5px solid var(--oxui-border-subtle);
           border-radius: 8px;
           overflow: hidden;
         "
@@ -113,11 +113,11 @@ const API = [
           <AppNav :items="items" />
           <template #status>
             <div style="padding: 0 20px 12px">
-              <Badge label="synced" color="var(--hm-personal)" />
+              <Badge label="synced" color="var(--oxui-personal)" />
             </div>
           </template>
           <template #footer>
-            <div style="font-size: 11px; color: var(--hm-text-tertiary)">1,234 memories</div>
+            <div style="font-size: 11px; color: var(--oxui-text-tertiary)">1,234 memories</div>
           </template>
         </AppSidebar>
         <div
@@ -128,7 +128,7 @@ const API = [
             display: flex;
             flex-direction: column;
             gap: 12px;
-            background: var(--hm-bg-base);
+            background: var(--oxui-bg-base);
           "
         >
           <div style="font-size: 14px; font-weight: 600">{{ ITEMS[active].label }}</div>

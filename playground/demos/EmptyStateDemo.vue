@@ -47,9 +47,9 @@ const API = [
         style="
           width: min(100%, 360px);
           height: 200px;
-          border: 0.5px solid var(--hm-border-subtle);
+          border: 0.5px solid var(--oxui-border-subtle);
           border-radius: 8px;
-          background: var(--hm-bg-surface);
+          background: var(--oxui-bg-surface);
         "
       >
         <EmptyState :message="message" :hint="hint">
@@ -58,10 +58,10 @@ const API = [
               <polygon
                 points="8,1.5 13.6,4.75 13.6,11.25 8,14.5 2.4,11.25 2.4,4.75"
                 fill="none"
-                stroke="var(--hm-border-strong)"
+                stroke="var(--oxui-border-strong)"
                 stroke-width="1"
               />
-              <circle cx="8" cy="8" r="1.5" fill="var(--hm-border-strong)" />
+              <circle cx="8" cy="8" r="1.5" fill="var(--oxui-border-strong)" />
             </svg>
           </template>
         </EmptyState>

@@ -5,11 +5,11 @@ import PgSection from '../PgSection.vue'
 
 const PRESETS = ['personal', 'workspace', 'org', 'warning', 'danger', 'accent'].map((t) => ({
   label: t,
-  value: `var(--hm-${t})`,
+  value: `var(--oxui-${t})`,
 }))
 
 const label = ref('personal')
-const color = ref('var(--hm-personal)')
+const color = ref('var(--oxui-personal)')
 // <input type="color"> only speaks hex, so it drives `color` but never reads it back.
 const custom = ref('#3d84d9')
 
@@ -53,9 +53,9 @@ const API = [
       <div class="pg-stack">
         <Badge :label="label" :color="color" />
         <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center">
-          <Badge label="personal" color="var(--hm-personal)" />
-          <Badge label="workspace" color="var(--hm-workspace)" />
-          <Badge label="org" color="var(--hm-org)" />
+          <Badge label="personal" color="var(--oxui-personal)" />
+          <Badge label="workspace" color="var(--oxui-workspace)" />
+          <Badge label="org" color="var(--oxui-org)" />
           <Badge label="no color" />
         </div>
       </div>

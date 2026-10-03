@@ -84,8 +84,8 @@ const API = [
       <div
         style="
           width: 220px;
-          background: var(--hm-bg-surface);
-          border: 0.5px solid var(--hm-border-subtle);
+          background: var(--oxui-bg-surface);
+          border: 0.5px solid var(--oxui-border-subtle);
           border-radius: 8px;
           overflow: hidden;
         "

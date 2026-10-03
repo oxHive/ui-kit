@@ -58,7 +58,7 @@ defineProps({
  * header, whose icon/name/version genuinely vary per consuming product.
  *
  * The brand wordmark uses 'Hanken Grotesk' at weight 800 — it degrades to
- * var(--hm-font-sans) if the consuming app hasn't loaded that font (see
+ * var(--oxui-font-sans) if the consuming app hasn't loaded that font (see
  * hivemind/dashboard/index.html for the Google Fonts link this component
  * currently relies on a consumer providing).
  *
@@ -73,8 +73,8 @@ defineProps({
   flex-shrink: 0;
   height: 100%;
   width: 200px;
-  background: var(--hm-bg-surface);
-  border-right: 0.5px solid var(--hm-border-subtle);
+  background: var(--oxui-bg-surface);
+  border-right: 0.5px solid var(--oxui-border-subtle);
 }
 .oxui-sidebar__header {
   display: flex;
@@ -82,7 +82,7 @@ defineProps({
   justify-content: flex-start;
   gap: 8px;
   padding: 24px 20px 28px;
-  border-bottom: 0.5px solid var(--hm-border-subtle);
+  border-bottom: 0.5px solid var(--oxui-border-subtle);
 }
 .oxui-sidebar__header-icon-name {
   display: flex;
@@ -93,14 +93,14 @@ defineProps({
   font-size: 19px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--hm-text-primary);
+  color: var(--oxui-text-primary);
   line-height: 1;
 }
 .oxui-sidebar__version {
   align-self: flex-end;
-  font-family: var(--hm-font-mono);
-  font-size: var(--hm-text-xs);
-  color: var(--hm-text-tertiary);
+  font-family: var(--oxui-font-mono);
+  font-size: var(--oxui-text-xs);
+  color: var(--oxui-text-tertiary);
   line-height: 1;
 }
 .oxui-sidebar__bottom {
@@ -108,7 +108,7 @@ defineProps({
 }
 .oxui-sidebar__status-box {
   padding: 16px 20px 20px;
-  border-top: 0.5px solid var(--hm-border-subtle);
+  border-top: 0.5px solid var(--oxui-border-subtle);
 }
 .oxui-sidebar__status-box:empty {
   display: none;
@@ -128,10 +128,10 @@ defineProps({
   filter: none;
 }
 .oxui-sidebar__brand-word {
-  font-family: 'Hanken Grotesk', var(--hm-font-sans);
-  font-size: var(--hm-text-xl);
+  font-family: 'Hanken Grotesk', var(--oxui-font-sans);
+  font-size: var(--oxui-text-xl);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--hm-text-primary);
+  color: var(--oxui-text-primary);
 }
 </style>

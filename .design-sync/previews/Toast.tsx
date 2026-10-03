@@ -9,7 +9,7 @@ export const Visible = () => (
       height: 140,
       transform: 'translateZ(0)',
       borderRadius: 8,
-      background: 'var(--hm-bg-base)',
+      background: 'var(--oxui-bg-base)',
     }}
   >
     <Toast visible message="Copied: /memory-edit mem_a1b2c3" />
