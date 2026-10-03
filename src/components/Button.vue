@@ -47,6 +47,11 @@ defineProps({
 .oxui-btn-primary:hover {
   background: #ffffff;
 }
+/* White on a near-black light-theme button would erase the label; lift it
+   toward a warm gray instead. Same [data-theme] mechanism as tokens.css. */
+:root[data-theme='light'] .oxui-btn-primary:hover {
+  background: #3a342b;
+}
 .oxui-btn-default {
   background: transparent;
   border-color: var(--hm-border-subtle);
@@ -58,10 +63,10 @@ defineProps({
 .oxui-btn-danger {
   background: var(--hm-danger-bg);
   border-color: var(--hm-danger-border);
-  color: var(--hm-danger);
+  color: var(--hm-danger-text);
 }
 .oxui-btn-danger:hover {
-  background: color-mix(in srgb, var(--hm-danger-bg) 70%, var(--hm-danger));
+  background: color-mix(in srgb, var(--hm-danger-bg) 85%, var(--hm-danger));
 }
 .oxui-btn-ghost {
   background: transparent;

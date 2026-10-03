@@ -13,7 +13,7 @@
   /* Text */
   --hm-text-primary: #f2f0ec;
   --hm-text-secondary: #a49e95;
-  --hm-text-tertiary: #67625a;
+  --hm-text-tertiary: #8c867c;
   --hm-text-disabled: #44403a;
 
   /* Brand — Personal (teal) */
@@ -41,6 +41,9 @@
   --hm-danger: #a32d2d;
   --hm-danger-bg: #220f0f;
   --hm-danger-border: #f09595;
+  /* Danger as text on --hm-danger-bg: the raw hue is too dark to read on the
+     dark tint, so text gets its own legibility variant like -bg/-border. */
+  --hm-danger-text: #f09595;
   --hm-success: #1d9e75;
   --hm-pending: #ba7517;
 
@@ -83,8 +86,8 @@
   --hm-border-strong: #b6a98e;
 
   --hm-text-primary: #211d17;
-  --hm-text-secondary: #6e6759;
-  --hm-text-tertiary: #948c7a;
+  --hm-text-secondary: #5c5649;
+  --hm-text-tertiary: #6f6858;
   --hm-text-disabled: #c2bbaa;
 
   --hm-personal-bg: #e2f4ec;
@@ -95,6 +98,7 @@
   --hm-warning-border: #dba14b;
   --hm-danger-bg: #fbe9e9;
   --hm-danger-border: #cf6c6c;
+  --hm-danger-text: #a32d2d;
 
   --hm-mono-bg: #f1ece0;
   --hm-mono-border: #e7e0d3;

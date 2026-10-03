@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `--hm-danger-text` token: the danger hue as readable text on
+  `--hm-danger-bg` (`#f09595` dark, `#a32d2d` light).
+
+### Changed
+
+- `--hm-text-tertiary` now meets WCAG AA (4.5:1) on base, surface and
+  elevated backgrounds in both themes: `#67625a` → `#8c867c` (dark),
+  `#948c7a` → `#6f6858` (light). Light `--hm-text-secondary` darkens
+  `#6e6759` → `#5c5649` so it stays a step above tertiary.
+
+### Fixed
+
+- `Button` `primary` hover no longer turns white in the light theme, which
+  made the label disappear.
+- `Button` `danger` text is legible in the dark theme (was about 2.6:1); the
+  hover tint is lighter so it stays above 4.5:1 in both themes.
+
 ## [0.2.0] - 2026-10-02
 
 First release published to npm.
