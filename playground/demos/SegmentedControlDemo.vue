@@ -22,12 +22,34 @@ const snippet = computed(
   aria-label="Filter by layer"
 />`,
 )
+
+const API = [
+  {
+    name: 'v-model',
+    type: 'string | number | boolean',
+    default: 'null',
+    note: "The selected option's value.",
+  },
+  {
+    name: 'options',
+    type: '{ label, value, description? }[]',
+    note: 'A description shows as a Tooltip on hover or focus and is exposed to screen readers.',
+  },
+  {
+    name: 'disabled',
+    type: 'boolean',
+    default: 'false',
+    note: 'Shows the current value but blocks changes, e.g. for locked settings.',
+  },
+  { name: 'aria-label', type: 'string', note: 'Lands on the radiogroup root. Always set one.' },
+]
 </script>
 
 <template>
   <PgSection
     title="SegmentedControl"
-    description="v-model; options: { label, value, description? }[]; disabled. Arrow keys move the selection."
+    description="A compact radio group for switching views or filters. It takes one Tab stop; the arrow keys move and select, wrapping at the ends."
+    :api="API"
   >
     <template #controls>
       <label class="pg-control pg-check">
@@ -36,14 +58,14 @@ const snippet = computed(
       </label>
     </template>
     <template #preview>
-      <div class="pg-section__preview--column">
+      <div class="pg-stack">
         <SegmentedControl
           v-model="value"
           :options="OPTIONS"
           :disabled="disabled"
           aria-label="Filter by layer"
         />
-        <span style="font-size: 12px; color: var(--hm-text-tertiary)">value: {{ value }}</span>
+        <span class="pg-note">value: {{ value }}</span>
       </div>
     </template>
     <template #snippet>{{ snippet }}</template>
