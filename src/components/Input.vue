@@ -29,7 +29,7 @@ defineExpose({
 .oxui-input {
   height: 32px;
   padding: 0 10px;
-  font-size: 13px;
+  font-size: var(--hm-text-md);
   font-family: var(--hm-font-sans);
   background: var(--hm-bg-elevated);
   border: 0.5px solid var(--hm-border-subtle);

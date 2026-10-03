@@ -59,7 +59,7 @@ const style = computed(() => {
   border: 0.5px solid var(--hm-border-default);
   background: var(--hm-bg-overlay);
   color: var(--hm-text-primary);
-  font-size: 11px;
+  font-size: var(--hm-text-sm);
   line-height: 1.4;
   white-space: normal;
   word-break: break-word;

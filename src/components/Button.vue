@@ -22,7 +22,7 @@ defineProps({
   cursor: pointer;
   border: 0.5px solid transparent;
   font-family: var(--hm-font-sans);
-  font-size: 12px;
+  font-size: var(--hm-text-base);
   height: 32px;
   padding: 0 14px;
   transition: background 0.1s;
@@ -35,7 +35,7 @@ defineProps({
 .oxui-btn-sm {
   height: 28px;
   padding: 0 10px;
-  font-size: 11px;
+  font-size: var(--hm-text-sm);
   font-family: var(--hm-font-mono);
 }
 .oxui-btn-primary {

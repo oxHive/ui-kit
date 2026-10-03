@@ -98,10 +98,8 @@ defineProps({
 }
 .oxui-sidebar__version {
   align-self: flex-end;
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
-  font-size: 10px;
+  font-family: var(--hm-font-mono);
+  font-size: var(--hm-text-xs);
   color: var(--hm-text-tertiary);
   line-height: 1;
 }
@@ -131,7 +129,7 @@ defineProps({
 }
 .oxui-sidebar__brand-word {
   font-family: 'Hanken Grotesk', var(--hm-font-sans);
-  font-size: 15px;
+  font-size: var(--hm-text-xl);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--hm-text-primary);

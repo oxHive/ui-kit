@@ -45,7 +45,11 @@
      dark tint, so text gets its own legibility variant like -bg/-border. */
   --hm-danger-text: #f09595;
   --hm-success: #1d9e75;
+  --hm-success-text: #1d9e75;
   --hm-pending: #ba7517;
+
+  /* Modal backdrop */
+  --hm-scrim: #00000099;
 
   /* Monospace surfaces */
   --hm-mono-bg: #171614;
@@ -99,9 +103,11 @@
   --hm-danger-bg: #fbe9e9;
   --hm-danger-border: #cf6c6c;
   --hm-danger-text: #a32d2d;
+  --hm-success-text: #0f6e56;
 
   --hm-mono-bg: #f1ece0;
   --hm-mono-border: #e7e0d3;
 
   --hm-accent-ring: #d9a44133;
+  --hm-scrim: #211d1759;
 }

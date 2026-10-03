@@ -138,7 +138,7 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onOutside))
   padding: 6px 12px;
   text-align: left;
   font-family: var(--hm-font-sans);
-  font-size: 12px;
+  font-size: var(--hm-text-base);
   color: var(--hm-text-secondary);
   background: none;
   border: none;
@@ -148,6 +148,9 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onOutside))
 .oxui-menu__item:focus-visible {
   background: var(--hm-bg-elevated);
   color: var(--hm-text-primary);
-  outline: none;
+}
+.oxui-menu__item:focus-visible {
+  outline: 2px solid var(--hm-accent);
+  outline-offset: -2px;
 }
 </style>

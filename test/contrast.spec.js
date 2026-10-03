@@ -38,6 +38,9 @@ const PAIRS = [
   // SegmentedControl's idle options and the neutral Badge sit on elevated.
   ['text-tertiary', 'bg-elevated'],
   ['danger-text', 'danger-bg'],
+  // CopyButton's copied state on default/ghost buttons.
+  ['success-text', 'bg-base'],
+  ['success-text', 'bg-elevated'],
 ]
 
 describe('token contrast', () => {

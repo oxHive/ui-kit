@@ -65,11 +65,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div
-    class="oxui-modal-overlay"
-    style="background: rgba(0, 0, 0, 0.6)"
-    @click.self="$emit('cancel')"
-  >
+  <div class="oxui-modal-overlay" style="background: var(--hm-scrim)" @click.self="$emit('cancel')">
     <div
       ref="modalRef"
       role="dialog"
@@ -122,7 +118,7 @@ onBeforeUnmount(() => {
   margin-bottom: 12px;
 }
 .oxui-modal__body {
-  font-size: 14px;
+  font-size: var(--hm-text-lg);
   margin-bottom: 20px;
 }
 .oxui-modal__actions {

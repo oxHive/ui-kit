@@ -39,9 +39,7 @@ const style = computed(() =>
   display: inline-block;
   border-radius: 4px;
   padding: 2px 8px;
-  font-size: 10px;
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
+  font-size: var(--hm-text-xs);
+  font-family: var(--hm-font-mono);
 }
 </style>

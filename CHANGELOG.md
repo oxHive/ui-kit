@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `--hm-danger-text` token: the danger hue as readable text on
   `--hm-danger-bg` (`#f09595` dark, `#a32d2d` light).
+- `--hm-success-text` token: teal that stays readable as text (`#1d9e75`
+  dark, `#0f6e56` light).
+- `--hm-scrim` token for the `Modal` backdrop (`#00000099` dark, a lighter
+  warm `#211d1759` in light).
+- `CopyButton` turns `--hm-success-text` while showing its copied state, on
+  the `default` and `ghost` variants (slotted icons follow via
+  `currentColor`).
 
 ### Changed
 
@@ -18,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   elevated backgrounds in both themes: `#67625a` → `#8c867c` (dark),
   `#948c7a` → `#6f6858` (light). Light `--hm-text-secondary` darkens
   `#6e6759` → `#5c5649` so it stays a step above tertiary.
+- `Badge`, `Toast`, `AppNav`'s count badge and `AppSidebar`'s version label
+  use `var(--hm-font-mono)` (IBM Plex Mono) instead of a hardcoded system
+  monospace stack.
+- Components size text with the `--hm-text-*` scale tokens instead of
+  hardcoded pixels; rendered sizes are unchanged.
+- `Modal` backdrop uses `--hm-scrim`, so it is lighter in the light theme.
 
 ### Fixed
 
@@ -25,6 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   made the label disappear.
 - `Button` `danger` text is legible in the dark theme (was about 2.6:1); the
   hover tint is lighter so it stays above 4.5:1 in both themes.
+- `Menu` items show the accent focus ring on keyboard focus, like `AppNav`
+  and `SegmentedControl`.
 
 ## [0.2.0] - 2026-10-02
 

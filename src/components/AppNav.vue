@@ -56,7 +56,7 @@ defineProps({
   align-items: center;
   justify-content: space-between;
   padding: 9px 12px;
-  font-size: 13px;
+  font-size: var(--hm-text-md);
   text-align: left;
   color: var(--hm-text-secondary);
   background: transparent;
@@ -107,11 +107,9 @@ defineProps({
   height: 18px;
   padding: 0 5px;
   border-radius: 999px;
-  font-size: 10px;
+  font-size: var(--hm-text-xs);
   line-height: 1;
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
+  font-family: var(--hm-font-mono);
   background: var(--hm-warning-bg);
   color: var(--hm-warning);
 }
