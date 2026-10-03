@@ -1,0 +1,4 @@
+/* The kit's tokens name IBM Plex Sans/Mono and AppSidebar's wordmark uses
+   Hanken Grotesk; consumer apps load them from Google Fonts (see
+   playground/index.html), so designs do the same. */
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');

@@ -5,7 +5,7 @@ import globals from 'globals'
 
 export default [
   {
-    ignores: ['dist/**', 'playground/dist/**'],
+    ignores: ['dist/**', 'playground/dist/**', 'ds-bundle/**', '.ds-sync/**'],
   },
   js.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
