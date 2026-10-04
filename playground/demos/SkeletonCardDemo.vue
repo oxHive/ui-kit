@@ -1,28 +1,32 @@
 <script setup>
 import { SkeletonCard } from '../../src/index.js'
 import PgSection from '../PgSection.vue'
+
+const SNIPPET = `<template v-if="loading">
+  <SkeletonCard v-for="n in 3" :key="n" />
+</template>`
 </script>
 
 <template>
-  <PgSection title="SkeletonCard" description="no props, just a loading placeholder shape">
-    <template #controls>
-      <span style="font-size: 12px; color: var(--hm-text-tertiary)">static, no controls</span>
-    </template>
+  <PgSection
+    title="SkeletonCard"
+    description="A list-row placeholder (title, body, meta bars) that shimmers while data loads. It takes no props, and the shimmer stops under prefers-reduced-motion."
+  >
     <template #preview>
       <div
         style="
-          width: 280px;
-          border: 0.5px solid var(--hm-border-subtle);
-          border-radius: 6px;
+          width: min(100%, 320px);
+          border: 0.5px solid var(--oxui-border-subtle);
+          border-radius: 8px;
           overflow: hidden;
-          background: var(--hm-bg-surface);
+          background: var(--oxui-bg-surface);
         "
+        aria-busy="true"
+        aria-label="Loading"
       >
-        <SkeletonCard />
-        <SkeletonCard />
-        <SkeletonCard />
+        <SkeletonCard v-for="n in 3" :key="n" />
       </div>
     </template>
-    <template #snippet>{{ '<SkeletonCard />' }}</template>
+    <template #snippet>{{ SNIPPET }}</template>
   </PgSection>
 </template>

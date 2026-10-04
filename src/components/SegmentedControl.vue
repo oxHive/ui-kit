@@ -83,32 +83,32 @@ function onKeydown(e, i) {
   gap: 2px;
   padding: 2px;
   border-radius: 7px;
-  background: var(--hm-bg-elevated);
-  border: 0.5px solid var(--hm-border-subtle);
+  background: var(--oxui-bg-elevated);
+  border: 0.5px solid var(--oxui-border-subtle);
 }
 .oxui-segmented__item {
   border: none;
   background: transparent;
   padding: 5px 11px;
   border-radius: 5px;
-  font-family: var(--hm-font-sans);
-  font-size: var(--hm-text-sm);
-  color: var(--hm-text-tertiary);
+  font-family: var(--oxui-font-sans);
+  font-size: var(--oxui-text-sm);
+  color: var(--oxui-text-tertiary);
   cursor: pointer;
   transition:
     background 0.1s,
     color 0.1s;
 }
 .oxui-segmented__item:hover:not(:disabled) {
-  color: var(--hm-text-secondary);
+  color: var(--oxui-text-secondary);
 }
 .oxui-segmented__item:focus-visible {
-  outline: 2px solid var(--hm-accent);
+  outline: 2px solid var(--oxui-accent);
   outline-offset: -2px;
 }
 .oxui-segmented__item--active {
-  background: var(--hm-bg-overlay);
-  color: var(--hm-text-primary);
+  background: var(--oxui-bg-overlay);
+  color: var(--oxui-text-primary);
   font-weight: 500;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }

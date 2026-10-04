@@ -3,16 +3,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--hm-font-sans)'],
-        mono: ['var(--hm-font-mono)'],
+        sans: ['var(--oxui-font-sans)'],
+        mono: ['var(--oxui-font-mono)'],
       },
       colors: {
-        'hm-personal': 'var(--hm-personal)',
-        'hm-workspace': 'var(--hm-workspace)',
-        'hm-org': 'var(--hm-org)',
-        'hm-warning': 'var(--hm-warning)',
-        'hm-danger': 'var(--hm-danger)',
-        'hm-accent': 'var(--hm-accent)',
+        'oxui-personal': 'var(--oxui-personal)',
+        'oxui-workspace': 'var(--oxui-workspace)',
+        'oxui-org': 'var(--oxui-org)',
+        'oxui-warning': 'var(--oxui-warning)',
+        'oxui-danger': 'var(--oxui-danger)',
+        'oxui-accent': 'var(--oxui-accent)',
       },
     },
   },

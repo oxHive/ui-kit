@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Breaking
+
+- All CSS custom properties are renamed from `--hm-*` to `--oxui-*`, matching
+  the components' `oxui-` class prefix (e.g. `--hm-bg-base` →
+  `--oxui-bg-base`). Update any `var(--hm-…)` references in consuming apps.
+- The Tailwind preset's color names are renamed to match: `hm-personal`,
+  `hm-workspace`, `hm-org`, `hm-warning`, `hm-danger` and `hm-accent` become
+  `oxui-*`, so classes like `bg-hm-personal` become `bg-oxui-personal`.
+
+### Added
+
+- `--oxui-danger-text` token: the danger hue as readable text on
+  `--oxui-danger-bg` (`#f09595` dark, `#a32d2d` light).
+- `--oxui-success-text` token: teal that stays readable as text (`#1d9e75`
+  dark, `#0f6e56` light).
+- `--oxui-scrim` token for the `Modal` backdrop (`#00000099` dark, a lighter
+  warm `#211d1759` in light).
+- `CopyButton` turns `--oxui-success-text` while showing its copied state, on
+  the `default` and `ghost` variants (slotted icons follow via
+  `currentColor`).
+
+### Changed
+
+- `--oxui-text-tertiary` now meets WCAG AA (4.5:1) on base, surface and
+  elevated backgrounds in both themes: `#67625a` → `#8c867c` (dark),
+  `#948c7a` → `#6f6858` (light). Light `--oxui-text-secondary` darkens
+  `#6e6759` → `#5c5649` so it stays a step above tertiary.
+- `Badge`, `Toast`, `AppNav`'s count badge and `AppSidebar`'s version label
+  use `var(--oxui-font-mono)` (IBM Plex Mono) instead of a hardcoded system
+  monospace stack.
+- Components size text with the `--oxui-text-*` scale tokens instead of
+  hardcoded pixels; rendered sizes are unchanged.
+- `Modal` backdrop uses `--oxui-scrim`, so it is lighter in the light theme.
+
+### Fixed
+
+- `Button` `primary` hover no longer turns white in the light theme, which
+  made the label disappear.
+- `Button` `danger` text is legible in the dark theme (was about 2.6:1); the
+  hover tint is lighter so it stays above 4.5:1 in both themes.
+- `Menu` items show the accent focus ring on keyboard focus, like `AppNav`
+  and `SegmentedControl`.
+
 ## [0.2.0] - 2026-10-02
 
 First release published to npm.

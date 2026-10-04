@@ -123,8 +123,8 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onOutside))
   min-width: 110px;
   padding: 4px 0;
   border-radius: 6px;
-  background: var(--hm-bg-overlay);
-  border: 0.5px solid var(--hm-border-default);
+  background: var(--oxui-bg-overlay);
+  border: 0.5px solid var(--oxui-border-default);
 }
 .oxui-menu__list--bottom {
   top: calc(100% + 4px);
@@ -137,17 +137,20 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onOutside))
   width: 100%;
   padding: 6px 12px;
   text-align: left;
-  font-family: var(--hm-font-sans);
-  font-size: 12px;
-  color: var(--hm-text-secondary);
+  font-family: var(--oxui-font-sans);
+  font-size: var(--oxui-text-base);
+  color: var(--oxui-text-secondary);
   background: none;
   border: none;
   cursor: pointer;
 }
 .oxui-menu__item:hover,
 .oxui-menu__item:focus-visible {
-  background: var(--hm-bg-elevated);
-  color: var(--hm-text-primary);
-  outline: none;
+  background: var(--oxui-bg-elevated);
+  color: var(--oxui-text-primary);
+}
+.oxui-menu__item:focus-visible {
+  outline: 2px solid var(--oxui-accent);
+  outline-offset: -2px;
 }
 </style>

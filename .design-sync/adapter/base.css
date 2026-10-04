@@ -1,0 +1,24 @@
+/* What every OxHive app sets up around the kit: the page painted from the
+   tokens (dark by default; <html data-theme="light"> switches), and the
+   slice of Tailwind's preflight the components assume (Modal's title and
+   EmptyState's paragraphs carry no margin reset of their own). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  background: var(--oxui-bg-base);
+  color: var(--oxui-text-primary);
+  font-family: var(--oxui-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}

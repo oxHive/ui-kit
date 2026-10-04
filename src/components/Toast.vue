@@ -11,9 +11,9 @@ defineProps({ visible: Boolean, message: { type: String, default: '' } })
         v-if="visible"
         class="oxui-toast"
         style="
-          background: var(--hm-bg-overlay);
-          border: 0.5px solid var(--hm-border-default);
-          color: var(--hm-text-secondary);
+          background: var(--oxui-bg-overlay);
+          border: 0.5px solid var(--oxui-border-default);
+          color: var(--oxui-text-secondary);
         "
       >
         {{ message }}
@@ -39,10 +39,8 @@ defineProps({ visible: Boolean, message: { type: String, default: '' } })
   white-space: nowrap;
   border-radius: 6px;
   padding: 6px 14px;
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
-  font-size: 12px;
+  font-family: var(--oxui-font-mono);
+  font-size: var(--oxui-text-base);
 }
 .oxui-toast-enter-active,
 .oxui-toast-leave-active {

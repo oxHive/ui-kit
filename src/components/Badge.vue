@@ -21,7 +21,7 @@ const safeColor = computed(() => (props.color && SAFE_COLOR.test(props.color) ? 
 const style = computed(() =>
   safeColor.value
     ? `background:color-mix(in srgb, ${safeColor.value} 18%, transparent); color:${safeColor.value}`
-    : 'background:var(--hm-bg-elevated); color:var(--hm-text-tertiary)',
+    : 'background:var(--oxui-bg-elevated); color:var(--oxui-text-tertiary)',
 )
 </script>
 
@@ -39,9 +39,7 @@ const style = computed(() =>
   display: inline-block;
   border-radius: 4px;
   padding: 2px 8px;
-  font-size: 10px;
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
+  font-size: var(--oxui-text-xs);
+  font-family: var(--oxui-font-mono);
 }
 </style>
