@@ -1,0 +1,33 @@
+# oxr configuration.
+#
+# The current version is always read from git tags -- nothing in this file
+# is a version field. Uncomment and edit only the settings you want to
+# change from their defaults.
+
+# sign-commit = false
+# sign-tag = false
+# push = true
+# tag = true
+# tag-name = "v{{version}}"
+# tag-pattern = "^v\\d+\\.\\d+\\.\\d+"
+# pre-release-commit-message = "chore: release v{{version}}"
+
+# [float-tags]
+# major = true
+# minor = false
+# major-tag-name = "v{{major}}"
+# minor-tag-name = "v{{major}}.{{minor}}"
+
+# The publish workflow fails unless the tag matches package.json's version.
+[[pre-release-replacements]]
+file = "package.json"
+search = "(?m)^  \"version\": \"[^\"]+\""
+replace = "  \"version\": \"{{version}}\""
+exactly = 1
+
+# design-sync adapter poses as @oxhive/ui, so its version mirrors the kit's.
+[[pre-release-replacements]]
+file = ".design-sync/adapter/package.json"
+search = "(?m)^  \"version\": \"[^\"]+\""
+replace = "  \"version\": \"{{version}}\""
+exactly = 1

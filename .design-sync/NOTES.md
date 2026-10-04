@@ -13,7 +13,7 @@
 - Build the kit first (`bun run build`), then run the converter with
   `--entry ./.design-sync/adapter/index.js --node-modules .ds-sync/node_modules`.
   The adapter's own `package.json` is named `@oxhive/ui` so the converter treats
-  it as the package; its `version` must be bumped by hand to match the kit.
+  it as the package; its `version` is kept in sync by `oxr release`.
 - `.design-sync/node_modules` must be a symlink to `../.ds-sync/node_modules`
   (gitignored; recreate per clone: `ln -sfn ../.ds-sync/node_modules .design-sync/node_modules`).
   Without it the `.d.ts` pass can't find `@types/react` ([DTS_REACT]) and the
@@ -58,7 +58,7 @@
 - `adapter/index.d.ts` is hand-maintained: it silently goes stale when Vue
   props/emits/slots change. Diff it against each component's `defineProps` /
   `defineEmits` / slots on every re-sync.
-- `adapter/package.json` `version` is hand-copied from the root package.json.
+- `adapter/package.json` `version` is bumped with the root package.json by `oxr release` (see `oxr.toml`).
 - The adapter depends on Vue internals only through public API (`createApp`,
   `h`, `shallowReactive`); a Vue major bump could still change slot/ref timing.
 - Fonts load from Google Fonts at runtime (network-dependent).
